@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10. Ready Images &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="11. Starting with AGL Image - Quick Start (for Rover 0.1.0)" href="aglimg.html"/>
+        <link rel="prev" title="9. Yocto Layer: meta-rover" href="yocto.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Ready Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#automotive-grade-linux-agl-image-for-rover-0-1-0">10.1. Automotive Grade Linux (AGL) Image for Rover 0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raspbian-jessie-image">10.2. Raspbian Jessie Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#to-install-the-latest-roverapp">10.2.1. To install the latest roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#to-start-roverapp">10.2.2. To start roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-rover-telemetry-ui">10.2.3. Using rover-telemetry-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#to-download-latest-roverweb">10.2.4. To download latest roverweb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#to-start-roverweb">10.2.5. To start roverweb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>10. Ready Images</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/images.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="ready-images">
+<h1>10. Ready Images<a class="headerlink" href="#ready-images" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="automotive-grade-linux-agl-image-for-rover-0-1-0">
+<h2>10.1. Automotive Grade Linux (AGL) Image for Rover 0.1.0<a class="headerlink" href="#automotive-grade-linux-agl-image-for-rover-0-1-0" title="Permalink to this headline">¶</a></h2>
+<p>Download <a class="reference external" href="https://owncloud.idial.institute/s/rZ1ULqVhX9CHjrl?path=%2F">AGL Image Rover 0.1.0</a>.</p>
+<p>Use <a class="reference external" href="https://app4mc-rover.github.io/rover-docs/content/aglimg.html">this link</a> to start with this AGL Image.</p>
+</div>
+<div class="section" id="raspbian-jessie-image">
+<h2>10.2. Raspbian Jessie Image<a class="headerlink" href="#raspbian-jessie-image" title="Permalink to this headline">¶</a></h2>
+<p>Download <a class="reference external" href="https://owncloud.idial.institute/s/uvcCBdCv9CrhZRk">Raspbian Jessie Image</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Includes dependencies and current rover-app, rover-telemetry-ui, and rover-web repositories</li>
+<li>Image Updated: 10.01.2017</li>
+</ul>
+</div></blockquote>
+<div class="section" id="to-install-the-latest-roverapp">
+<h3>10.2.1. To install the latest roverapp<a class="headerlink" href="#to-install-the-latest-roverapp" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/rover-app
+git pull
+git checkout master
+sudo ./install_roverapp.sh
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="to-start-roverapp">
+<h3>10.2.2. To start roverapp<a class="headerlink" href="#to-start-roverapp" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/rover-app/build/bin
+sudo ./roverapp
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="using-rover-telemetry-ui">
+<h3>10.2.3. Using rover-telemetry-ui<a class="headerlink" href="#using-rover-telemetry-ui" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Project is hosted in the repository: <a class="reference external" href="https://github.com/app4mc-rover/rover-telemetry-ui.git">https://github.com/app4mc-rover/rover-telemetry-ui.git</a>.</p>
+</div>
+<p>To download:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/app4mc-rover/rover-telemetry-ui.git</span>
+</pre></div>
+</td></tr></table></div>
+<p>To download dependencies (If you don’t have node.js installed, first install node.js):</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">cd</span> <span class="nx">rover</span><span class="o">-</span><span class="nx">telemetry</span><span class="o">-</span><span class="nx">ui</span>
+<span class="nx">sudo</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">net</span> <span class="nx">connect</span> <span class="nx">serve</span><span class="o">-</span><span class="kr">static</span> <span class="nx">http</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">io</span> <span class="nx">express</span> <span class="nx">path</span> <span class="nx">mqtt</span>
+</pre></div>
+</td></tr></table></div>
+<p>To run the server:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">cd</span> <span class="nx">scripts</span><span class="o">/</span>
+<span class="nx">sudo</span> <span class="nx">node</span> <span class="nx">start_rovertelemetryui</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+</td></tr></table></div>
+<p>Finally, go to your web browser and find the page at <code class="docutils literal notranslate"><span class="pre">http://&lt;your</span> <span class="pre">host</span> <span class="pre">address&gt;:5055/rovertelemetryui.html</span></code>.</p>
+</div>
+<div class="section" id="to-download-latest-roverweb">
+<h3>10.2.4. To download latest roverweb<a class="headerlink" href="#to-download-latest-roverweb" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/rover-web
+git pull
+git checkout master
+<span class="nb">cd</span> rover-web
+sudo npm install net connect serve-static http socket.io express path mqtt
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="to-start-roverweb">
+<h3>10.2.5. To start roverweb<a class="headerlink" href="#to-start-roverweb" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/rover-web/scripts/nodejs
+sudo node start_roverweb.js
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure to change the folder to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;your/roverweb/root/path&gt;/scripts/nodejs/</span></code> before executing the script, since it’ll use default directory for hosting.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aglimg.html" class="btn btn-neutral float-right" title="11. Starting with AGL Image - Quick Start (for Rover 0.1.0)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="yocto.html" class="btn btn-neutral" title="9. Yocto Layer: meta-rover" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

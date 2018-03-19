@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Introduction &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="2. Rover Hardware" href="roverhw.html"/>
+        <link rel="prev" title="APP4MC-Rover Documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-rover-or-app4mc-rover">1.1. What is rover or APP4MC-rover?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rover-motivations-and-research">1.2. rover Motivations and Research</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rover-infrastructure">1.3. rover Infrastructure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>1. Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="introduction">
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/rover_logo.png"><img alt="../roverstatic/images/rover_logo.png" class="align-center" src="../_images/rover_logo.png" style="width: 25%;" /></a>
+<div class="section" id="what-is-rover-or-app4mc-rover">
+<h2>1.1. What is rover or APP4MC-rover?<a class="headerlink" href="#what-is-rover-or-app4mc-rover" title="Permalink to this headline">¶</a></h2>
+<p><strong>Rover</strong> (<strong>APP4MC-rover</strong>) is an open-source mobile robot that is designed to demonstrate the outcomes of <a class="reference external" href="http://www.eclipse.org/app4mc">APP4MC</a> and <a class="reference external" href="https://itea3.org/project/appstacle.html">APPSTACLE</a> projects.
+Rover features applications and tooling required to address complex research fields such as cloud communication, open-source tooling, multi-core and cluster computing.
+Rover is equipped with powerful sensors, motors, and display units to interact with the physical world. Furthermore, Rover uses <a class="reference external" href="http://polarsys.org/polarsys-rover-user-story-application-platform-project-multicore-app4mc">Eclipse PolarSys project</a> for its chassis and mechanics.</p>
+<a class="reference internal image-reference" href="../_images/rover11_2017.png"><img alt="../roverstatic/images/rover11_2017.png" class="align-center" src="../_images/rover11_2017.png" style="width: 70%;" /></a>
+<iframe width="700" height="500" src="https://www.youtube.com/embed/-YKgCpiWNCw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><a class="reference internal image-reference" href="../_images/rover2.jpg"><img alt="../roverstatic/images/rover2.jpg" class="align-center" src="../_images/rover2.jpg" style="width: 100%;" /></a>
+<p>Rover software, called <strong>roverapp</strong> features a multi-threaded (POSIX threads or Pthreads) C/C++ implementation that runs on Linux-based embedded single board computers (such as Raspberry Pi).
+Rover features countless threads dedicated to communication infrastructure, sensor driving, display unit (such as OLED displays) utilization, bluetooth communication, image processing, and behavior modes (such as Parking, Adaptive Cruise Control, Manual Driving, and Booth Modes).
+It also features drivers for sensors such as magnetometers, accelerometers, various ultrasonic sensors, and camera modules. Furthermore, OLED display, buttons, a buzzer are utilized.</p>
+<a class="reference internal image-reference" href="../_images/roverwebdisplay.png"><img alt="../roverstatic/images/roverwebdisplay.png" class="align-center" src="../_images/roverwebdisplay.png" style="width: 100%;" /></a>
+<p>It also features a web user interface,
+called <strong>roverweb</strong>, that is used for many purposes such as sensor data visualization, camera streaming, displaying core utilization, and web-based robot control.
+Roverweb is equipped with a powerful embedded back-end that is called <a class="reference external" href="https://nodejs.org/en/">node.js</a> and a main infrastructure library called <a class="reference external" href="https://socket.io/">socket.io</a>. It makes use of the created javascript programs in order to create reactive web servers that communicate with websockets.</p>
+</div>
+<div class="section" id="rover-motivations-and-research">
+<h2>1.2. rover Motivations and Research<a class="headerlink" href="#rover-motivations-and-research" title="Permalink to this headline">¶</a></h2>
+<p>Rover is used as a demonstrator for two main subjects:</p>
+<a class="reference internal image-reference" href="../_images/APP4MCLogo.png"><img alt="../roverstatic/images/APP4MCLogo.png" class="align-center" src="../_images/APP4MCLogo.png" style="width: 19%;" /></a>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Model-based multi-core software development evaluation and tool support (with <a class="reference external" href="http://www.eclipse.org/app4mc">APP4MC</a> tool)</dt>
+<dd><ul class="first last">
+<li>For this purpose, threads are designed run in a schedulable and traceable fashion (with the help of <strong>timing</strong> library)</li>
+<li>System traces are taken in Common Trace Format using Linux’ perf profiler and customly created scripts.</li>
+<li>APP4MC is used for modeling and deployment outcomes</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/APPSTACLE.png"><img alt="../roverstatic/images/APPSTACLE.png" class="align-center" src="../_images/APPSTACLE.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../_images/KUKSA.png"><img alt="../roverstatic/images/KUKSA.png" class="align-center" src="../_images/KUKSA.png" style="width: 25%;" /></a>
+<ul>
+<li><dl class="first docutils">
+<dt>Cloud-based communication, data infrastructure testing (for <a class="reference external" href="https://itea3.org/project/appstacle.html">APPSTACLE</a> and <a class="reference external" href="https://projects.eclipse.org/proposals/eclipse-kuksa">Eclipse KUKSA</a> projects)</dt>
+<dd><ul class="first last simple">
+<li>For this purpose, a cloud instance with Eclipse Hono infrastructure is connected to using popular communication techniques such as MQTT, and REST API.</li>
+<li>Eclipse Hono dashboard (using Grafana and InfluxDB) is configured.</li>
+</ul>
+</dd>
+</dl>
+<p>Our current testing ecosystem is given below:</p>
+<a class="reference internal image-reference" href="../_images/rover_infra2_exp.png"><img alt="../roverstatic/images/rover_infra2_exp.png" class="align-center" src="../_images/rover_infra2_exp.png" style="width: 100%;" /></a>
+</li>
+</ul>
+</div>
+<div class="section" id="rover-infrastructure">
+<h2>1.3. rover Infrastructure<a class="headerlink" href="#rover-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>A small yet crucial portion of Rover’s infrastructure (especially addressing network infrastructure) is given below. Rover uses javascript object notation (JSON) format for the information that is sent and received between processes. However, it makes use of the shared memory in order to communicate between threads.</p>
+<a class="reference internal image-reference" href="../_images/complete_infra.png"><img alt="../roverstatic/images/complete_infra.png" class="align-center" src="../_images/complete_infra.png" style="width: 100%;" /></a>
+<p>Roverapp is a C/C++ application with a single executable that makes use of its shared memory for data communication and that involves many drivers, custom libraries, external libraries, and many threads (with task functions).</p>
+<p>Roverweb uses javascript (node.js) for its backend and javascript, jQuery, CSS, and HTML for its front-end.
+Roverapp to roverweb inter-process communication is handled using NET sockets and using TCP protocol, whereas roverweb front-end and back-end is connected using websockets (with HTTP and using Socket.IO events).</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roverhw.html" class="btn btn-neutral float-right" title="2. Rover Hardware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="APP4MC-Rover Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

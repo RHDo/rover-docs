@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. Cross Development in Raspbian &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="9. Yocto Layer: meta-rover" href="yocto.html"/>
+        <link rel="prev" title="7. Installation Instructions" href="installation.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Cross Development in Raspbian</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#roverapp-software-development-kit-sdk-extension-for-raspbian">8.1. Roverapp Software Development Kit (SDK) Extension for Raspbian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-development-with-windows-using-eclipse-cdt-and-rover-app-raspbian-cross-sdk">8.2. Cross Development with Windows using Eclipse CDT and rover-app-raspbian-cross-sdk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-windows-toolchain-setup">8.2.1. Step 1: Windows Toolchain Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-downloading-and-installing-eclipse">8.2.2. Step 2: Downloading and Installing Eclipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-setting-up-cross-compiler-in-eclipse">8.2.3. Step 3: Setting Up Cross Compiler in Eclipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-downloading-rover-app">8.2.4. Step 4: Downloading rover-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-downloading-rover-app-raspbian-cross-sdk">8.2.5. Step 5: Downloading rover-app-raspbian-cross-sdk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-configuring-environment-variables">8.2.6. Step 6: Configuring Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-cross-settings">8.2.7. Step 7: Cross Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-8-run-configurations">8.2.8. Step 8: Run Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-9-editing-preprocessor-definitions-d">8.2.9. Step 9: Editing Preprocessor Definitions (-D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-10-adjusting-include-paths-i">8.2.10. Step 10: Adjusting Include Paths (-I)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-11-specifying-precompiled-libraries-to-be-linked-l-and-library-search-paths-l">8.2.11. Step 11: Specifying Precompiled Libraries to be Linked (-l) and Library Search Paths (-L)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-12-specifying-additional-linker-flags">8.2.12. Step 12: Specifying Additional Linker Flags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>8. Cross Development in Raspbian</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/cross.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="cross-development-in-raspbian">
+<h1>8. Cross Development in Raspbian<a class="headerlink" href="#cross-development-in-raspbian" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="roverapp-software-development-kit-sdk-extension-for-raspbian">
+<h2>8.1. Roverapp Software Development Kit (SDK) Extension for Raspbian<a class="headerlink" href="#roverapp-software-development-kit-sdk-extension-for-raspbian" title="Permalink to this headline">¶</a></h2>
+<p>Roverapp Software Development Kit (SDK) Extension features include files and library files for the dependencies of the Rover for Cross development. While it is tested with <a class="reference external" href="http://gnutoolchains.com/raspberry/">SysGCC Cross toolchain for Raspberry Pi</a>, it is able to work with many others.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Roverapp Software Development Kit (SDK) Extension for Raspbian is maintained under the following Git repository: <a class="reference external" href="https://github.com/app4mc-rover/rover-app-raspbian-cross-sdk">https://github.com/app4mc-rover/rover-app-raspbian-cross-sdk</a>.</p>
+</div>
+</div>
+<div class="section" id="cross-development-with-windows-using-eclipse-cdt-and-rover-app-raspbian-cross-sdk">
+<h2>8.2. Cross Development with Windows using Eclipse CDT and rover-app-raspbian-cross-sdk<a class="headerlink" href="#cross-development-with-windows-using-eclipse-cdt-and-rover-app-raspbian-cross-sdk" title="Permalink to this headline">¶</a></h2>
+<p>In this section, cross development using Eclipse CDT IDE in Windows platform is explained.</p>
+<div class="section" id="step-1-windows-toolchain-setup">
+<h3>8.2.1. Step 1: Windows Toolchain Setup<a class="headerlink" href="#step-1-windows-toolchain-setup" title="Permalink to this headline">¶</a></h3>
+<p>Raspberry Pi toolchain installations for Windows are provided in <a class="reference external" href="http://gnutoolchains.com/raspberry/">this website</a>. Download raspbian-jessie or raspbian-stretch toolchain to match which distro used in the rover.</p>
+</div>
+<div class="section" id="step-2-downloading-and-installing-eclipse">
+<h3>8.2.2. Step 2: Downloading and Installing Eclipse<a class="headerlink" href="#step-2-downloading-and-installing-eclipse" title="Permalink to this headline">¶</a></h3>
+<p>Next step is to download the Eclipse CDT. Follow these steps :<a class="reference external" href="http://www.gurucoding.com/en/raspberry_pi_eclipse/installing_eclipse.php">Eclipse IDE Setup</a>.</p>
+</div>
+<div class="section" id="step-3-setting-up-cross-compiler-in-eclipse">
+<h3>8.2.3. Step 3: Setting Up Cross Compiler in Eclipse<a class="headerlink" href="#step-3-setting-up-cross-compiler-in-eclipse" title="Permalink to this headline">¶</a></h3>
+<p>Now that Eclipse is running, the next step is to set up the cross compiler aligned with the Raspberry Pi toolchain : <a class="reference external" href="http://www.gurucoding.com/en/raspberry_pi_eclipse/raspberry_pi_cross_compilation_in_eclipse.php">Cross Compiler Setup</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Use <code class="docutils literal notranslate"><span class="pre">roverapp</span></code> for the project name while creating a new project.</p>
+</div>
+</div>
+<div class="section" id="step-4-downloading-rover-app">
+<h3>8.2.4. Step 4: Downloading rover-app<a class="headerlink" href="#step-4-downloading-rover-app" title="Permalink to this headline">¶</a></h3>
+<p>Now that your project named <code class="docutils literal notranslate"><span class="pre">roverapp</span></code> exists, you can download or clone roverapp repository contents and put it in your project folder. Example way to achieve this in Linux is given below:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/your/project
+git clone https://github.com/app4mc-rover/rover-app.git
+cp -r rover-app/* .
+rm -rf rover-app
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="step-5-downloading-rover-app-raspbian-cross-sdk">
+<h3>8.2.5. Step 5: Downloading rover-app-raspbian-cross-sdk<a class="headerlink" href="#step-5-downloading-rover-app-raspbian-cross-sdk" title="Permalink to this headline">¶</a></h3>
+<p>To start using the SDK extension, download or clone the contents of the Git repository to a known location of your choice.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git clone https://github.com/app4mc-rover/rover-app-raspbian-cross-sdk.git
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="step-6-configuring-environment-variables">
+<h3>8.2.6. Step 6: Configuring Environment Variables<a class="headerlink" href="#step-6-configuring-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>Paths discussed in this documentation are given relatively. Some environment variables including these paths need to be declared in Eclipse.</p>
+<p>To achieve this, go to Properties for your project &gt; C/C++ Build &gt; Environment. Following variables should be declared:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>RASPBERRY_TOOLCHAIN_PREFIX</dt>
+<dd><ul class="first last">
+<li>Value: arm-linux-gnueabihf-</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RASPBERRY_TOOLCHAIN_PATH</dt>
+<dd><ul class="first last">
+<li>Example Value: C:\SysGCC\Raspberry</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ROVERAPP_PROJECT_PATH</dt>
+<dd><ul class="first last">
+<li>Example Value: C:\path\to\your\project\roverapp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ROVERAPP_CROSS_SDK_PATH</dt>
+<dd><ul class="first last">
+<li>Example Value: C:\path\to\rover-app-raspbian-cross-sdk</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>An example declaration of those environment variables are shown in the following image:</p>
+<a class="reference internal image-reference" href="../_images/environmentvars.png"><img alt="../roverstatic/images/environmentvars.png" class="align-center" src="../_images/environmentvars.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="step-7-cross-settings">
+<h3>8.2.7. Step 7: Cross Settings<a class="headerlink" href="#step-7-cross-settings" title="Permalink to this headline">¶</a></h3>
+<p>To make sure Eclipse CDT knows about your cross development toolchain, Cross settings must be completed as shown below under Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross Settings:</p>
+<a class="reference internal image-reference" href="../_images/crosssettings.png"><img alt="../roverstatic/images/crosssettings.png" class="align-center" src="../_images/crosssettings.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="step-8-run-configurations">
+<h3>8.2.8. Step 8: Run Configurations<a class="headerlink" href="#step-8-run-configurations" title="Permalink to this headline">¶</a></h3>
+<p>From Run &gt; Run Configurations, create a new run configuration and apply the following changes.</p>
+<a class="reference internal image-reference" href="../_images/runconfigurations.png"><img alt="../roverstatic/images/runconfigurations.png" class="align-center" src="../_images/runconfigurations.png" style="width: 100%;" /></a>
+<p>Under Connection in Run Configurations, enter your SSH credentials.</p>
+<a class="reference internal image-reference" href="../_images/credentials.png"><img alt="../roverstatic/images/credentials.png" class="align-center" src="../_images/credentials.png" style="width: 70%;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In order to avoid certain authentication problems, connecting as root can be considered.</p>
+</div>
+</div>
+<div class="section" id="step-9-editing-preprocessor-definitions-d">
+<h3>8.2.9. Step 9: Editing Preprocessor Definitions (-D)<a class="headerlink" href="#step-9-editing-preprocessor-definitions-d" title="Permalink to this headline">¶</a></h3>
+<p>Rover-app software is designed so that it compiles different files using different compilers. When cross debugging using Eclipse CDT, <code class="docutils literal notranslate"><span class="pre">CROSS_COMPILE_ECLIPSE</span></code> preprocessor definition must be declared.</p>
+<p>To achieve this, locate to Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross GCC Compiler &gt; Preprocessor and Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross G++ Compiler &gt; Preprocessor and add the preprocessor definition as shown below:</p>
+<a class="reference internal image-reference" href="../_images/preprocessor.png"><img alt="../roverstatic/images/preprocessor.png" class="align-center" src="../_images/preprocessor.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="step-10-adjusting-include-paths-i">
+<h3>8.2.10. Step 10: Adjusting Include Paths (-I)<a class="headerlink" href="#step-10-adjusting-include-paths-i" title="Permalink to this headline">¶</a></h3>
+<p>Include paths for the GNU toolchain should be specified in order to compile both internal and precompiled libraries. To do this with rover-app-raspbian-cross-sdk following steps should be done:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Go to Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross GCC Compiler &gt; Includes and add the following to Include Paths (-I)</dt>
+<dd><ul class="first last">
+<li>$(ROVERAPP_PROJECT_PATH)\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\raspicam-0.1.3</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\i2c-dev</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\paho-mqtt</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Go to Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross G++ Compiler &gt; Includes and add the following to Include Paths (-I)</dt>
+<dd><ul class="first last">
+<li>$(ROVERAPP_PROJECT_PATH)\include\drivers\oled_drivers</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\raspicam-0.1.3</li>
+<li>$(ROVERAPP_PROJECT_PATH)\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\jsoncpp\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\bluetooth</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\wiringPi</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\calib3d\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\features2d\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\flann\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\imgcodecs\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\ml\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\videoio\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\core\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\highgui\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\opencv-3.2.0\modules\imgproc\include</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\includes\paho-mqtt</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>At the end, it should look like the following (roughly):</p>
+<a class="reference internal image-reference" href="../_images/includepaths.png"><img alt="../roverstatic/images/preprocessor.png" class="align-center" src="../_images/includepaths.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="step-11-specifying-precompiled-libraries-to-be-linked-l-and-library-search-paths-l">
+<h3>8.2.11. Step 11: Specifying Precompiled Libraries to be Linked (-l) and Library Search Paths (-L)<a class="headerlink" href="#step-11-specifying-precompiled-libraries-to-be-linked-l-and-library-search-paths-l" title="Permalink to this headline">¶</a></h3>
+<p>Precompiled ARM-compiled binaries presented in the SDK extension such as shared object files <code class="docutils literal notranslate"><span class="pre">.so</span></code>, archive files <code class="docutils literal notranslate"><span class="pre">.a</span></code>, object files <code class="docutils literal notranslate"><span class="pre">.o</span></code> must be declared in the Eclipse CDT as a next step.</p>
+<p>To achieve this using the rover-app-raspbian-cross-sdk, following steps must be performed:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Go to Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross G++ Linker &gt; Libraries and add following to the Libraries (-l):</dt>
+<dd><ul class="first last">
+<li>raspicam</li>
+<li>raspicam_cv</li>
+<li>pthread</li>
+<li>opencv_ml</li>
+<li>opencv_imgcodecs</li>
+<li>opencv_videoio</li>
+<li>opencv_calib3d</li>
+<li>opencv_features2d</li>
+<li>opencv_flann</li>
+<li>opencv_core</li>
+<li>opencv_highgui</li>
+<li>opencv_imgproc</li>
+<li>jsoncpp</li>
+<li>bluetooth</li>
+<li>wiringPi</li>
+<li>wiringPiDev</li>
+<li>paho-mqtt3a</li>
+<li>paho-mqtt3as</li>
+<li>paho-mqtt3c</li>
+<li>paho-mqtt3cs</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>In the same window, add following to the Library search path (-L):</dt>
+<dd><ul class="first last">
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\wiringPi-libs</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\raspicam-libs</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\opencv-libs</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\jsoncpp-libs</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\bluetooth-libs</li>
+<li>$(ROVERAPP_CROSS_SDK_PATH)\shared-libs\paho-mqtt-libs</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure to add include paths to the respective sections Assembly, GCC, G++ depending on which compiler is used for which packages.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Be sure that every precompiled library that will be compiled and linked must be already installed in rover’s Raspbian/Linux environment. Libraries are found in <code class="docutils literal notranslate"><span class="pre">/usr/lib</span></code> and <code class="docutils literal notranslate"><span class="pre">/usr/local/lib</span></code>.
+A shared library can be searched by making use of the following command (for example, <code class="docutils literal notranslate"><span class="pre">opencv_core</span></code>):</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo find / -name *opencv_core*so*
+</pre></div>
+</div>
+</div>
+<p>At the end, it should look like the following (roughly):</p>
+<a class="reference internal image-reference" href="../_images/linker.png"><img alt="../roverstatic/images/linker.png" class="align-center" src="../_images/linker.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="step-12-specifying-additional-linker-flags">
+<h3>8.2.12. Step 12: Specifying Additional Linker Flags<a class="headerlink" href="#step-12-specifying-additional-linker-flags" title="Permalink to this headline">¶</a></h3>
+<p>Be sure to add the following under Project Properties for your project &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; Cross G++ Linker &gt; Linker Flags:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-Wl,-rpath-link,<span class="s2">&quot;</span><span class="k">$(</span>RASPBERRY_TOOLCHAIN_PATH<span class="k">)</span><span class="s2">\arm-linux-gnueabihf\sysroot\lib\arm-linux-gnueabihf&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>To observe which libraries are linked, you can activate verbose output, by the following Linker Flags content:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>-Wl,-verbose,-rpath-link,<span class="s2">&quot;</span><span class="k">$(</span>RASPBERRY_TOOLCHAIN_PATH<span class="k">)</span><span class="s2">\arm-linux-gnueabihf\sysroot\lib\arm-linux-gnueabihf&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yocto.html" class="btn btn-neutral float-right" title="9. Yocto Layer: meta-rover" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="7. Installation Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

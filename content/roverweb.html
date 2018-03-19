@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Rover Web UI: roverweb &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="6. Rover Telemetry UI: MQTT Client UI for Rover" href="rovertelemetry.html"/>
+        <link rel="prev" title="4. Rover API Documentation" href="roverapi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Rover Web UI: roverweb</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-roverweb">5.1. What is roverweb?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roverweb-infrastructure">5.2. roverweb Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roverweb-features">5.3. roverweb Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-roverweb">5.4. Downloading roverweb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started-with-roverweb">5.5. Getting started with roverweb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">5.5.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-application">5.5.2. Running the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-camera-stream">5.5.3. Starting the Camera Stream</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#roverweb-complete-reference">5.6. roverweb Complete Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#some-words-on-infrastructure">5.6.1. Some Words on Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ports">5.6.2. Ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-formats">5.6.3. Data Formats</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>5. Rover Web UI: roverweb</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/roverweb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="rover-web-ui-roverweb">
+<h1>5. Rover Web UI: roverweb<a class="headerlink" href="#rover-web-ui-roverweb" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/roverweb_logo.png"><img alt="../roverstatic/images/roverweb_logo.png" class="align-center" src="../_images/roverweb_logo.png" style="width: 40%;" /></a>
+<div class="section" id="what-is-roverweb">
+<h2>5.1. What is roverweb?<a class="headerlink" href="#what-is-roverweb" title="Permalink to this headline">¶</a></h2>
+<p><strong>roverweb</strong> is a Web-based user interface that includes not only powerful back-end communication infrastructure with roverapp, but also provides functionalities such as driving the rover, camera streaming, visualizing core utilization, displaying sensor information, and sensor calibration.</p>
+<p>Roverweb is equipped with a powerful embedded back-end that is called <a class="reference external" href="https://nodejs.org/en/">node.js</a> and a main infrastructure library called <a class="reference external" href="https://socket.io/">socket.io</a>. It makes use of the created javascript programs in order to create reactive web servers that communicate with websockets.</p>
+</div>
+<div class="section" id="roverweb-infrastructure">
+<h2>5.2. roverweb Infrastructure<a class="headerlink" href="#roverweb-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>Roverweb’s communication infrastructure is given below:</p>
+<a class="reference internal image-reference" href="../_images/roverweb_infra.png"><img alt="../roverstatic/images/roverweb_infra.png" class="align-center" src="../_images/roverweb_infra.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="roverweb-features">
+<h2>5.3. roverweb Features<a class="headerlink" href="#roverweb-features" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="downloading-roverweb">
+<h2>5.4. Downloading roverweb<a class="headerlink" href="#downloading-roverweb" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Rover-web source code is maintained under the following repositories:</p>
+<p class="last"><a class="reference external" href="https://github.com/app4mc-rover/rover-web">https://github.com/app4mc-rover/rover-web</a></p>
+</div>
+</div>
+<div class="section" id="getting-started-with-roverweb">
+<h2>5.5. Getting started with roverweb<a class="headerlink" href="#getting-started-with-roverweb" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>5.5.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to see how roverapp is installed and compiled, please see <a class="reference internal" href="installation.html#roverwebinstallation"><span class="std std-ref">roverweb Installation</span></a> section.</p>
+</div>
+</div>
+<div class="section" id="running-the-application">
+<h3>5.5.2. Running the Application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h3>
+<p>Before running the application, make sure that installation steps are successfully completed.
+In order to run the server after installation, the following command must be executed from roverweb root:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;your/roverweb/root/path&gt;/scripts/nodejs/
+sudo node start_roverweb.js
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure to change the folder to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;your/roverweb/root/path&gt;/scripts/nodejs/</span></code> before executing the script, since it’ll use default directory for hosting.</p>
+</div>
+<p>After reading from the console that HTTP server is running, the web interface could be accessed using <code class="docutils literal notranslate"><span class="pre">http://192.168.168.1:5500/roverweb.html</span></code>.
+Before the web interface can be opened, it is important for one to connect to the network (using SSID/PSK) of the rover.</p>
+<p>For roverweb’s operation, it is not necessary for roverapp to be running. However, full functions of roverweb could be benefited when roverapp is also running.</p>
+</div>
+<div class="section" id="starting-the-camera-stream">
+<h3>5.5.3. Starting the Camera Stream<a class="headerlink" href="#starting-the-camera-stream" title="Permalink to this headline">¶</a></h3>
+<p>After <code class="docutils literal notranslate"><span class="pre">mjpg_streamer</span></code> is installed, one can start the camera stream in roverweb using the following command:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;your/roverweb/root/path&gt;/
+sudo bash scripts/bash/camera_stream/start_camera_stream.sh
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure that the <code class="docutils literal notranslate"><span class="pre">start_camera_stream.sh</span></code> is given execution permissions. This is achieved by <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">scripts/bash/camera_stream/start_camera_stream.sh</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="roverweb-complete-reference">
+<h2>5.6. roverweb Complete Reference<a class="headerlink" href="#roverweb-complete-reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="some-words-on-infrastructure">
+<h3>5.6.1. Some Words on Infrastructure<a class="headerlink" href="#some-words-on-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>Roverweb consists of the following elements:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">roverweb_http_server.js</span></code>: HTTP server realizes web interface contents in a proper fashion. Thus, the information can be displayed using web browsers.</li>
+<li><code class="docutils literal notranslate"><span class="pre">roverweb_tcp_client.js</span></code>: Reactive TCP client that connects to the TCP client end port and sends information to roverapp. TCP client implementation uses NET sockets and is implemented in a manner that constantly tries to reconnect if a connection fails.</li>
+<li><code class="docutils literal notranslate"><span class="pre">roverweb_tcp_server.js</span></code>: Reactive TCP server that connects to the TCP server end port and receives information from roverapp.  TCP server implementation uses NET sockets and is implemented in a manner that constantly tries to reconnect if a connection fails.</li>
+<li><code class="docutils literal notranslate"><span class="pre">roverweb_socketio_server.js</span></code>: SocketIO server is a core implementation that handles Websocket communication between <code class="docutils literal notranslate"><span class="pre">roverweb_socketio_server.js</span></code> and <code class="docutils literal notranslate"><span class="pre">roverweb_tcp_server.js</span></code> and <code class="docutils literal notranslate"><span class="pre">roverweb_tcp_client.js</span></code> using HTTP protocol. It is able to pass data to/from HTTP server.</li>
+<li><code class="docutils literal notranslate"><span class="pre">js-interfaces</span></code>: Interface files are responsible for variable globalisation between <code class="docutils literal notranslate"><span class="pre">roverweb_socketio_server.js</span></code> and <code class="docutils literal notranslate"><span class="pre">roverweb_tcp_server.js</span></code> and <code class="docutils literal notranslate"><span class="pre">roverweb_tcp_client.js</span></code>.</li>
+</ul>
+<p>Once the application is run using <code class="docutils literal notranslate"><span class="pre">start_roverweb.js</span></code> each of these components are initiated, and the web interface is available at <code class="docutils literal notranslate"><span class="pre">http://192.168.168.1:5500/roverweb.html</span></code>.</p>
+</div>
+<div class="section" id="ports">
+<h3>5.6.2. Ports<a class="headerlink" href="#ports" title="Permalink to this headline">¶</a></h3>
+<p>roverweb uses several ports in the network stack in order to keep communication running. The allocated ports are given below:</p>
+<ul class="simple">
+<li>HTTP server: 5500</li>
+<li>Socket.IO server: 5500 (same port as the HTTP)</li>
+<li>Roverweb TCP server end: 8502</li>
+<li>Roverweb TCP client end: 8501</li>
+</ul>
+</div>
+<div class="section" id="data-formats">
+<h3>5.6.3. Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h3>
+<p>Four types of data is currently passed between roverapp and roverweb’s reactive socket processes. Those data are all JSON formatted, concatenated with
+end of file (EOF) string <code class="docutils literal notranslate"><span class="pre">\r\n</span></code>.</p>
+<ul class="simple">
+<li>Sensor Data (from roverapp to roverweb), denoted by <code class="docutils literal notranslate"><span class="pre">sensor</span></code></li>
+<li>Core Utilization Data (from roverapp to roverweb), denoted by <code class="docutils literal notranslate"><span class="pre">util</span></code></li>
+<li>Rover Control Data (from roverweb to roverapp), denoted by <code class="docutils literal notranslate"><span class="pre">control</span></code></li>
+<li>Rover Speed Data (from roverweb to roverapp), denoted by <code class="docutils literal notranslate"><span class="pre">speed</span></code></li>
+</ul>
+<p>Example data are shown below for each of the given data format types:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Sensor Data</dt>
+<dd><p class="first">Data is periodically sent from roverapp to roverweb.</p>
+<div class="last highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="p">{</span>
+             <span class="s2">&quot;rover_dtype&quot;</span>   <span class="p">:</span> <span class="s2">&quot;sensor&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;data&quot;</span> <span class="p">:</span>
+             <span class="p">{</span>
+                     <span class="s2">&quot;infrared0&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;infrared1&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;infrared2&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;infrared3&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;front&quot;</span>       <span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                     <span class="s2">&quot;rear&quot;</span>        <span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                     <span class="s2">&quot;temperature&quot;</span> <span class="p">:</span> <span class="mf">22.0</span><span class="p">,</span>
+                     <span class="s2">&quot;humidity&quot;</span>    <span class="p">:</span> <span class="mf">67.0</span><span class="p">,</span>
+                     <span class="s2">&quot;bearing&quot;</span>     <span class="p">:</span> <span class="mf">47.0</span>
+             <span class="p">}</span>
+     <span class="p">}</span>\<span class="n">r</span>\<span class="n">n</span>
+</pre></div>
+</td></tr></table></div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Utilization Data</dt>
+<dd><p class="first">Data is periodically sent from roverapp to roverweb.</p>
+<div class="last highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="p">{</span>
+             <span class="s2">&quot;rover_dtype&quot;</span>   <span class="p">:</span> <span class="s2">&quot;util&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;data&quot;</span> <span class="p">:</span>
+             <span class="p">{</span>
+                     <span class="s2">&quot;core0&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;core1&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;core2&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;core3&quot;</span>   <span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+             <span class="p">}</span>
+     <span class="p">}</span>\<span class="n">r</span>\<span class="n">n</span>
+</pre></div>
+</td></tr></table></div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Control Data</strong></dt>
+<dd><p class="first">Data is asynchronously (upon user events) sent from roverweb to roverapp.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="p">{</span>
+             <span class="s2">&quot;rover_dtype&quot;</span>   <span class="p">:</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;data&quot;</span> <span class="p">:</span>
+             <span class="p">{</span>
+                     <span class="s2">&quot;command&quot;</span>   <span class="p">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+             <span class="p">}</span>
+     <span class="p">}</span>\<span class="n">r</span>\<span class="n">n</span>
+</pre></div>
+</td></tr></table></div>
+<p><code class="docutils literal notranslate"><span class="pre">command</span></code> entry can indicate many integrated functions, such as the ones listed below:</p>
+<ul class="last simple">
+<li>P → Parking Mode Left</li>
+<li>O → Parking Mode Right</li>
+<li>U → Compass Calibration</li>
+<li>M → Adaptive Cruise Control Mode</li>
+<li>X → Manual Drive Mode</li>
+<li>L → Booth Mode - Demo1</li>
+<li>N → Booth Mode - Demo2</li>
+<li>R → Shutdown Hook</li>
+<li>U → Compass Calibration</li>
+<li>F → Stop Movement</li>
+<li>Q → Go Forward-Left</li>
+<li>W → Go Forward</li>
+<li>E → Go Forward-Right</li>
+<li>A → Go Backward-Left</li>
+<li>S → Go Backward</li>
+<li>D → Go Backward-Right</li>
+<li>J → Turn Left On Spot</li>
+<li>K → Turn Right On Spot</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Speed Data</dt>
+<dd><p class="first">Data is asynchronously (upon user events) sent from roverweb to roverapp.</p>
+<div class="last highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="p">{</span>
+             <span class="s2">&quot;rover_dtype&quot;</span>   <span class="p">:</span> <span class="s2">&quot;speed&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;data&quot;</span> <span class="p">:</span>
+             <span class="p">{</span>
+                     <span class="s2">&quot;speed&quot;</span>   <span class="p">:</span> <span class="mi">360</span><span class="p">,</span>
+             <span class="p">}</span>
+     <span class="p">}</span>\<span class="n">r</span>\<span class="n">n</span>
+</pre></div>
+</td></tr></table></div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rovertelemetry.html" class="btn btn-neutral float-right" title="6. Rover Telemetry UI: MQTT Client UI for Rover" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roverapi.html" class="btn btn-neutral" title="4. Rover API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

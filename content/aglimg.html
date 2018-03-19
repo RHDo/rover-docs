@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. Starting with AGL Image - Quick Start (for Rover 0.1.0) &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="12. Additional Features" href="extra.html"/>
+        <link rel="prev" title="10. Ready Images" href="images.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-the-image">11.1. Downloading the Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-steps-one-time-only-per-local-computer">11.2. Configuration Steps (One Time Only per Local Computer)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-node-js-rover-telemetry-ui-and-local-mosquitto-broker">11.2.1. Installation of Node.JS, Rover Telemetry UI and Local Mosquitto Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-steps">11.3. Running Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#starting-rover-telemetry-ui">11.3.1. Starting Rover Telemetry UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-rover-conf">11.3.2. Configuring rover.conf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#killing-the-previously-built-roverapp">11.3.3. Killing the previously built roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-roverapp-with-an-eclipse-che-built-executable">11.3.4. Starting the roverapp with an Eclipse Che-built executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-roverapp-with-a-back-up-version-0-1-1">11.3.5. Starting the roverapp with a back-up version 0.1.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-steps-for-demonstration">11.3.6. Final steps for demonstration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-connecting-to-a-wifi-on-rover-agl-image">11.4. (Optional) Connecting to a Wifi on Rover AGL Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#killing-roverapp">11.5. Killing Roverapp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-developing-with-eclipse-che">11.6. (Optional) Developing with Eclipse Che</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/aglimg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="starting-with-agl-image-quick-start-for-rover-0-1-0">
+<h1>11. Starting with AGL Image - Quick Start (for Rover 0.1.0)<a class="headerlink" href="#starting-with-agl-image-quick-start-for-rover-0-1-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="downloading-the-image">
+<h2>11.1. Downloading the Image<a class="headerlink" href="#downloading-the-image" title="Permalink to this headline">¶</a></h2>
+<p>Download the 0.1.0 Image from <a class="reference external" href="https://owncloud.idial.institute/s/rZ1ULqVhX9CHjrl?path=%2F">this link</a>.</p>
+<p>Download Etcher from <a class="reference external" href="https://etcher.io/">this link</a> and flash the image to the SD card.</p>
+</div>
+<div class="section" id="configuration-steps-one-time-only-per-local-computer">
+<h2>11.2. Configuration Steps (One Time Only per Local Computer)<a class="headerlink" href="#configuration-steps-one-time-only-per-local-computer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation-of-node-js-rover-telemetry-ui-and-local-mosquitto-broker">
+<h3>11.2.1. Installation of Node.JS, Rover Telemetry UI and Local Mosquitto Broker<a class="headerlink" href="#installation-of-node-js-rover-telemetry-ui-and-local-mosquitto-broker" title="Permalink to this headline">¶</a></h3>
+<p>To demonstrate the rover, you’ll need Rover Telemetry UI.</p>
+<p>First install node.js with the help of <a class="reference external" href="http://nodesource.com/blog/installing-node-js-tutorial-ubuntu/">http://nodesource.com/blog/installing-node-js-tutorial-ubuntu/</a> for Ubuntu 16.04.</p>
+<p>On your local machine, to download Rover Telemetry UI:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/app4mc-rover/rover-telemetry-ui.git</span>
+</pre></div>
+</td></tr></table></div>
+<p>On your local machine, to download dependencies (If you don’t have node.js installed, first install node.js):</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">cd</span> <span class="nx">rover</span><span class="o">-</span><span class="nx">telemetry</span><span class="o">-</span><span class="nx">ui</span>
+<span class="nx">sudo</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">net</span> <span class="nx">connect</span> <span class="nx">serve</span><span class="o">-</span><span class="kr">static</span> <span class="nx">http</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">io</span> <span class="nx">express</span> <span class="nx">path</span> <span class="nx">mqtt</span>
+</pre></div>
+</td></tr></table></div>
+<p>If you don’t have a mosquitto broker, you can install one to your local machine by using the following. If you have, please skip the following command.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install mosquitto
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="running-steps">
+<h2>11.3. Running Steps<a class="headerlink" href="#running-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="starting-rover-telemetry-ui">
+<h3>11.3.1. Starting Rover Telemetry UI<a class="headerlink" href="#starting-rover-telemetry-ui" title="Permalink to this headline">¶</a></h3>
+<p>On your local machine, to run the Rover Telemetry UI server:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="nx">cd</span> <span class="nx">scripts</span><span class="o">/</span>
+        <span class="nx">sudo</span> <span class="nx">node</span> <span class="nx">start_rovertelemetryui</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="configuring-rover-conf">
+<h3>11.3.2. Configuring rover.conf<a class="headerlink" href="#configuring-rover-conf" title="Permalink to this headline">¶</a></h3>
+<p>Now, configure rover.conf on your local machine and copy it to the rover:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~
+wget <span class="s1">&#39;https://raw.githubusercontent.com/app4mc-rover/rover-app/0.1.1/samples/rover.conf.sample&#39;</span>
+mv rover.conf.sample rover.conf
+nano rover.conf
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-ini notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for roverapp.</span>
+<span class="c1"># Place in /etc/rover.conf</span>
+<span class="na">ROVER_IDENTITY_C</span><span class="o">=</span><span class="s">1</span>
+<span class="na">MQTT_BROKER_C</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">MQTT_BROKER_PORT_C</span><span class="o">=</span><span class="s">1883</span>
+<span class="na">ROVER_MQTT_QOS_C</span><span class="o">=</span><span class="s">0</span>
+<span class="na">MQTT_USERNAME_C</span><span class="o">=</span><span class="s">sensor1@DEFAULT_TENANT</span>
+<span class="na">MQTT_PASSWORD_C</span><span class="o">=</span><span class="s">hono-secret</span>
+<span class="na">USE_GROOVE_SENSOR_C</span><span class="o">=</span><span class="s">0</span>
+<span class="na">USE_REDIRECTED_TOPICS_C</span><span class="o">=</span><span class="s">0</span>
+<span class="na">HONO_HTTP_HOST_C</span><span class="o">=</span><span class="s">idial.institute</span>
+<span class="na">HONO_HTTP_PORT_C</span><span class="o">=</span><span class="s">8080</span>
+<span class="na">HONO_HTTP_TENANT_NAME_C</span><span class="o">=</span><span class="s">DEFAULT_TENANT</span>
+<span class="na">HONO_HTTP_DEVICE_ID_C</span><span class="o">=</span><span class="s">4711</span>
+<span class="na">HONO_HTTP_REGISTER_PORT_C</span><span class="o">=</span><span class="s">28080</span>
+<span class="na">HONO_HTTP_USERNAME_C</span><span class="o">=</span><span class="s">sensor1</span>
+<span class="na">HONO_HTTP_PASSWORD_C</span><span class="o">=</span><span class="s">hono-secret</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>The configuration file should look like the one above. It is space sensitive so be sure not to introduce any unnecessary whitespaces or blank characters to the format. You should configure <code class="docutils literal notranslate"><span class="pre">MQTT_BROKER_C</span></code> with the exact hostname of the MQTT broker that you will use.</p>
+<p>If you have chosen to use a mosquitto broker on your local computer, you should configure <code class="docutils literal notranslate"><span class="pre">MQTT_BROKER_C</span></code> with your IP address. On a Linux machine you can find out your IP address with:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ifconfig
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>For testing only, you don’t have change the <code class="docutils literal notranslate"><span class="pre">MQTT_BROKER_PORT_C</span></code>, <code class="docutils literal notranslate"><span class="pre">MQTT_USERNAME_C</span></code>, <code class="docutils literal notranslate"><span class="pre">MQTT_PASSWORD_C</span></code> values.</p>
+<p>If you are using a Groove sensor, change <code class="docutils literal notranslate"><span class="pre">USE_GROOVE_SENSOR_C</span></code> to 1, default is 0.</p>
+<p>If you are planning to redirect messages from Eclipse Hono, change <code class="docutils literal notranslate"><span class="pre">USE_REDIRECTED_TOPICS_C</span></code> to 1, default is 0.</p>
+<p>Now, copy the configured rover.conf to the rover. For this you’ll need to boot your rover with the recently flashed SD card.</p>
+<p>Copy the configuration file from your PC (fill in the &lt;rover-ip-address&gt;):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install rsync
+rsync -r rover.conf root@&lt;rover-ip-address&gt;:/etc/rover.conf
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>(If you didn’t already) SSH into your rover by using (fill in the &lt;rover-ip-address&gt; ):</p>
+<p>If you dont know the rover’s IP address you can either use Nmap on Linux (i.e. sudo nmap -sn 192.168.1.0/24), or Advanced IP Scanner on Windows.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ssh root@&lt;rover-ip-address&gt;
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="killing-the-previously-built-roverapp">
+<h3>11.3.3. Killing the previously built roverapp<a class="headerlink" href="#killing-the-previously-built-roverapp" title="Permalink to this headline">¶</a></h3>
+<p>Once SSHed, kill the existing roverapp:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ps -aux <span class="p">|</span> grep roverapp
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>Look for the PID value in the first column and in the row where /usr/sbin/roverapp executable is located, then replace this with &lt;PID&gt; below:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">kill</span> -9 &lt;PID&gt;
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="starting-the-roverapp-with-an-eclipse-che-built-executable">
+<h3>11.3.4. Starting the roverapp with an Eclipse Che-built executable<a class="headerlink" href="#starting-the-roverapp-with-an-eclipse-che-built-executable" title="Permalink to this headline">¶</a></h3>
+<p>If previously deployed, Eclipse Che-built executable is located at /projects/rover-app/build/bin/. Simply type the following to start the app:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>/projects/rover-app/build/bin/roverapp
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="starting-the-roverapp-with-a-back-up-version-0-1-1">
+<h3>11.3.5. Starting the roverapp with a back-up version 0.1.1<a class="headerlink" href="#starting-the-roverapp-with-a-back-up-version-0-1-1" title="Permalink to this headline">¶</a></h3>
+<p>If previously deployed, type the following to run the backup version:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>/home/mozcelikors/qtCreatorWorkspace/roverapp/build/bin/roverapp
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you dont have a backup version 0.1.1 pre-built executable, you can download the build directory from <a class="reference external" href="https://owncloud.idial.institute/s/wodPfDmgtRv47Gk">this link</a>.
+After downloading, this executable should be copied exactly at <code class="docutils literal notranslate"><span class="pre">/home/mozcelikors/qtCreatorWorkspace/roverapp/build/</span></code> in AGL image.
+This is a workaround for those who would like to only test with the rover and not develop on it.</p>
+<p>To do this, unzip the file to a directory named <code class="docutils literal notranslate"><span class="pre">build</span></code>. On your local machine, copy its contents to rover using:</p>
+<div class="last highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>rsync -r build/* root@&lt;rover-ip-address&gt;:/home/mozcelikors/qtCreatorWorkspace/roverapp/build/
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="final-steps-for-demonstration">
+<h3>11.3.6. Final steps for demonstration<a class="headerlink" href="#final-steps-for-demonstration" title="Permalink to this headline">¶</a></h3>
+<p>Go to your web browser and find the Rover Telemetry UI at <code class="docutils literal notranslate"><span class="pre">http://&lt;your</span> <span class="pre">host</span> <span class="pre">address&gt;:5055/rovertelemetryui.html</span></code>.</p>
+<p>In the telemetry UI, you have to enter broker address starting with <code class="docutils literal notranslate"><span class="pre">tcp://</span></code>, If you are using a local mosquitto server this would be <code class="docutils literal notranslate"><span class="pre">tcp://&lt;your-ip-address&gt;</span></code>.
+If you configured credentials, you can also enter them. Default is without any credentials. After specifying the rover ID as it is in the rover.conf, hit Connect.</p>
+<p>If you would like to also test rover-web, simply go to <code class="docutils literal notranslate"><span class="pre">http://&lt;rover-ip-address&gt;:5500/roverweb.html</span></code> from your local machine.</p>
+</div>
+</div>
+<div class="section" id="optional-connecting-to-a-wifi-on-rover-agl-image">
+<h2>11.4. (Optional) Connecting to a Wifi on Rover AGL Image<a class="headerlink" href="#optional-connecting-to-a-wifi-on-rover-agl-image" title="Permalink to this headline">¶</a></h2>
+<p>Until this point, we had the assumption that you SSHed into rover using an ethernet cable. If you want to avoid that and want to able to connect to rover with wifi you’ll have to use <code class="docutils literal notranslate"><span class="pre">connmanctl</span></code>.</p>
+<p>Now, by using your ethernet cable, SSH into the rover like you normally would and type the following:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>connmanctl
+agent on
+services
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>You should now be able to see the available wifi networks around rover. Copy the psk key of the network you want to connect to (i.e. <code class="docutils literal notranslate"><span class="pre">wifi_b827eb861868_6f322d574c414e3837_managed_psk</span></code>). Then, type the following by replacing &lt;copied-psk-key&gt; with the copied value:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>connect &lt;copied-psk-key&gt;
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>You’ll be asked a Passphrase. Enter it and wait for a message. If properly connected, you’ll be notified that you’re now connected. Then type:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>quit
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>If you weren’t able to connect, Repeat this section one more time.</p>
+<p>Now, exit the SSH session and plug off the ethernet cable.
+Obtain the new IP address of your rover and you can use this new IP address from now on for SSHing and controlling the rover.</p>
+</div>
+<div class="section" id="killing-roverapp">
+<h2>11.5. Killing Roverapp<a class="headerlink" href="#killing-roverapp" title="Permalink to this headline">¶</a></h2>
+<p>Press Ctrl + C a few times</p>
+</div>
+<div class="section" id="optional-developing-with-eclipse-che">
+<h2>11.6. (Optional) Developing with Eclipse Che<a class="headerlink" href="#optional-developing-with-eclipse-che" title="Permalink to this headline">¶</a></h2>
+<p>If you want to develop on the rover using Eclipse Che, go to the rover-connected Eclipse Che instance from your browser. An example instance is currently located at <a class="reference external" href="http://idial.institute:38080/dashboard/#/load-factory/?url=https://github.com/mozcelikors/CppAglDev">IDiAL Eclipse Che with CppAglDev Factory</a>.</p>
+<p>To start developing with the rover, you need to obtain the IP address of the rover, which should be in Eclipse Che instance network. Then you need to configure the created workspace by changing the TARGET_IP environment variable from workspace settings. After restarting the workspace, the workspace will pull the master repository and set up the commands to Configure, Build, Deploy and Run the roverapp.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extra.html" class="btn btn-neutral float-right" title="12. Additional Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="images.html" class="btn btn-neutral" title="10. Ready Images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

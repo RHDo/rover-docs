@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>APP4MC-Rover Documentation &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="#"/>
+        <link rel="next" title="1. Introduction" href="content/intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="content/intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>APP4MC-Rover Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="app4mc-rover-documentation">
+<h1>APP4MC-Rover Documentation<a class="headerlink" href="#app4mc-rover-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="content/intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/intro.html#what-is-rover-or-app4mc-rover">1.1. What is rover or APP4MC-rover?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/intro.html#rover-motivations-and-research">1.2. rover Motivations and Research</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/intro.html#rover-infrastructure">1.3. rover Infrastructure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverhw.html">2. Rover Hardware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/roverhw.html#complete-rover-hardware-requirements">2.1. Complete Rover Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverhw.html#about-motor-driver-layer">2.2. About Motor Driver Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverhw.html#about-roversenselayer-revision-2">2.3. About RoverSenseLayer Revision 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/roverhw.html#roversenselayer-features">2.3.1. RoverSenseLayer Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverhw.html#roversenselayer-schematics">2.3.2. RoverSenseLayer Schematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverhw.html#roversenselayer-source-files">2.3.3. RoverSenseLayer Source Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverhw.html#hardware-setup-guide">2.4. Hardware Setup Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverapp.html">3. Rover Software: roverapp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/roverapp.html#what-is-roverapp">3.1. What is roverapp?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverapp.html#roverapp-infrastructure">3.2. roverapp Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverapp.html#downloading-roverapp">3.3. Downloading roverapp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverapp.html#getting-started-with-roverapp">3.4. Getting started with roverapp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/roverapp.html#installation">3.4.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverapp.html#running-roverapp">3.4.2. Running roverapp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverapp.html#roverapp-complete-reference">3.5. roverapp Complete Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/roverapp.html#drivers">3.5.1. Drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#oled-libraries">3.5.1.1. OLED Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverapp.html#created-libraries">3.5.2. Created Libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#status-library">3.5.2.1. status_library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#hono-interaction">3.5.2.2. hono_interaction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#registering-a-device">3.5.2.2.1. Registering a Device</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#arguments">3.5.2.2.1.1. Arguments</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#operation">3.5.2.2.1.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#sending-telemetry-data-to-eclipse-hono-instance">3.5.2.2.2. Sending Telemetry Data to Eclipse Hono Instance</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#id1">3.5.2.2.2.1. Arguments</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#id2">3.5.2.2.2.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#sending-event-data-to-eclipse-hono-instance">3.5.2.2.3. Sending Event Data to Eclipse Hono Instance</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#id3">3.5.2.2.3.1. Arguments</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/roverapp.html#id4">3.5.2.2.3.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#handling-rest-api-http-responses-and-status-codes">3.5.2.2.4. Handling REST API /HTTP Responses and Status Codes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#debugging">3.5.2.2.5. Debugging</a></li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#example-usage">3.5.2.2.6. Example Usage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="content/roverapp.html#resources">3.5.2.2.7. Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#pthread-monitoring">3.5.2.3. pthread_monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#pthread-distribution-lib">3.5.2.4. pthread_distribution_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="content/roverapp.html#timing">3.5.2.5. timing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverapp.html#tasks-and-threads">3.5.3. Tasks and Threads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/roverweb.html">5. Rover Web UI: roverweb</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#what-is-roverweb">5.1. What is roverweb?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#roverweb-infrastructure">5.2. roverweb Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#roverweb-features">5.3. roverweb Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#downloading-roverweb">5.4. Downloading roverweb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#getting-started-with-roverweb">5.5. Getting started with roverweb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#installation">5.5.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#running-the-application">5.5.2. Running the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#starting-the-camera-stream">5.5.3. Starting the Camera Stream</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/roverweb.html#roverweb-complete-reference">5.6. roverweb Complete Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#some-words-on-infrastructure">5.6.1. Some Words on Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#ports">5.6.2. Ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/roverweb.html#data-formats">5.6.3. Data Formats</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/rovertelemetry.html#description">6.1. Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/rovertelemetry.html#operation">6.2. Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/rovertelemetry.html#using-rover-telemetry-ui">6.3. Using rover-telemetry-ui</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/installation.html">7. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/installation.html#before-you-begin">7.1. Before You Begin..</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#beginning-with-raspberry-pi">7.1.1. Beginning with Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#enabling-bluetooth">7.1.2. Enabling Bluetooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#enabling-i2c">7.1.3. Enabling I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#setting-up-camera">7.1.4. Setting Up Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#setting-up-an-access-point">7.1.5. Setting Up an Access Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/installation.html#roverapp-installation">7.2. roverapp Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#requirements">7.2.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#manual-installation-instructions">7.2.2. Manual Installation Instructions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="content/installation.html#installing-dependencies">7.2.2.1. Installing Dependencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="content/installation.html#installing-build-time-dependencies">7.2.2.1.1. Installing build-time dependencies</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-python-2-7">7.2.2.1.1.1. Installing Python 2.7</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-psutil">7.2.2.1.1.2. Installing psutil</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-other-build-time-dependencies">7.2.2.1.1.3. Installing other build-time dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="content/installation.html#installing-run-time-dependencies">7.2.2.1.2. Installing run-time dependencies</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-opencv">7.2.2.1.2.1. Installing OpenCV</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-wiringpi">7.2.2.1.2.2. Installing wiringPi</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-bluetooth">7.2.2.1.2.3. Installing bluetooth</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-jsoncpp">7.2.2.1.2.4. Installing jsoncpp</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-raspicam">7.2.2.1.2.5. Installing raspicam</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-paho-mqtt-c-libraries">7.2.2.1.2.6. Installing paho.mqtt.c libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="content/installation.html#installing-roverapp">7.2.2.2. Installing roverapp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/installation.html#roverweb-installation">7.3. roverweb Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#id3">7.3.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/installation.html#id4">7.3.2. Manual Installation Instructions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="content/installation.html#id5">7.3.2.1. Installing Dependencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="content/installation.html#id6">7.3.2.1.1. Installing build-time dependencies</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-curl">7.3.2.1.1.1. Installing curl</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="content/installation.html#id7">7.3.2.1.2. Installing run-time dependencies</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-node-js-and-its-required-modules">7.3.2.1.2.1. Installing node.js and its required modules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="content/installation.html#installing-mjpg-streamer-experimental">7.3.2.1.2.2. Installing mjpg-streamer-experimental</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="content/installation.html#installing-roverweb">7.3.2.2. Installing roverweb</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="content/installation.html#downloading-fetching-roverweb">7.3.2.2.1. Downloading (Fetching) roverweb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/cross.html">8. Cross Development in Raspbian</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/cross.html#roverapp-software-development-kit-sdk-extension-for-raspbian">8.1. Roverapp Software Development Kit (SDK) Extension for Raspbian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/cross.html#cross-development-with-windows-using-eclipse-cdt-and-rover-app-raspbian-cross-sdk">8.2. Cross Development with Windows using Eclipse CDT and rover-app-raspbian-cross-sdk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-1-windows-toolchain-setup">8.2.1. Step 1: Windows Toolchain Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-2-downloading-and-installing-eclipse">8.2.2. Step 2: Downloading and Installing Eclipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-3-setting-up-cross-compiler-in-eclipse">8.2.3. Step 3: Setting Up Cross Compiler in Eclipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-4-downloading-rover-app">8.2.4. Step 4: Downloading rover-app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-5-downloading-rover-app-raspbian-cross-sdk">8.2.5. Step 5: Downloading rover-app-raspbian-cross-sdk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-6-configuring-environment-variables">8.2.6. Step 6: Configuring Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-7-cross-settings">8.2.7. Step 7: Cross Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-8-run-configurations">8.2.8. Step 8: Run Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-9-editing-preprocessor-definitions-d">8.2.9. Step 9: Editing Preprocessor Definitions (-D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-10-adjusting-include-paths-i">8.2.10. Step 10: Adjusting Include Paths (-I)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-11-specifying-precompiled-libraries-to-be-linked-l-and-library-search-paths-l">8.2.11. Step 11: Specifying Precompiled Libraries to be Linked (-l) and Library Search Paths (-L)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/cross.html#step-12-specifying-additional-linker-flags">8.2.12. Step 12: Specifying Additional Linker Flags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/yocto.html">9. Yocto Layer: meta-rover</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/yocto.html#meta-rover">9.1. meta-rover</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/images.html">10. Ready Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/images.html#automotive-grade-linux-agl-image-for-rover-0-1-0">10.1. Automotive Grade Linux (AGL) Image for Rover 0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/images.html#raspbian-jessie-image">10.2. Raspbian Jessie Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/images.html#to-install-the-latest-roverapp">10.2.1. To install the latest roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/images.html#to-start-roverapp">10.2.2. To start roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/images.html#using-rover-telemetry-ui">10.2.3. Using rover-telemetry-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/images.html#to-download-latest-roverweb">10.2.4. To download latest roverweb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/images.html#to-start-roverweb">10.2.5. To start roverweb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#downloading-the-image">11.1. Downloading the Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#configuration-steps-one-time-only-per-local-computer">11.2. Configuration Steps (One Time Only per Local Computer)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#installation-of-node-js-rover-telemetry-ui-and-local-mosquitto-broker">11.2.1. Installation of Node.JS, Rover Telemetry UI and Local Mosquitto Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#running-steps">11.3. Running Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#starting-rover-telemetry-ui">11.3.1. Starting Rover Telemetry UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#configuring-rover-conf">11.3.2. Configuring rover.conf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#killing-the-previously-built-roverapp">11.3.3. Killing the previously built roverapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#starting-the-roverapp-with-an-eclipse-che-built-executable">11.3.4. Starting the roverapp with an Eclipse Che-built executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#starting-the-roverapp-with-a-back-up-version-0-1-1">11.3.5. Starting the roverapp with a back-up version 0.1.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="content/aglimg.html#final-steps-for-demonstration">11.3.6. Final steps for demonstration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#optional-connecting-to-a-wifi-on-rover-agl-image">11.4. (Optional) Connecting to a Wifi on Rover AGL Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#killing-roverapp">11.5. Killing Roverapp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/aglimg.html#optional-developing-with-eclipse-che">11.6. (Optional) Developing with Eclipse Che</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/extra.html">12. Additional Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/extra.html#tracing-with-rover">12.1. Tracing with Rover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/extra.html#a-short-tutorial-on-mqtt">12.2. A Short Tutorial on MQTT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/extlinks.html">13. External Web Links</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="content/intro.html" class="btn btn-neutral float-right" title="1. Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

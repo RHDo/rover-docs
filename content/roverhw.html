@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Rover Hardware &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="3. Rover Software: roverapp" href="roverapp.html"/>
+        <link rel="prev" title="1. Introduction" href="intro.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Rover Hardware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#complete-rover-hardware-requirements">2.1. Complete Rover Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-motor-driver-layer">2.2. About Motor Driver Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-roversenselayer-revision-2">2.3. About RoverSenseLayer Revision 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#roversenselayer-features">2.3.1. RoverSenseLayer Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roversenselayer-schematics">2.3.2. RoverSenseLayer Schematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roversenselayer-source-files">2.3.3. RoverSenseLayer Source Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-setup-guide">2.4. Hardware Setup Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Rover Hardware</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/roverhw.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="rover-hardware">
+<h1>2. Rover Hardware<a class="headerlink" href="#rover-hardware" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="complete-rover-hardware-requirements">
+<h2>2.1. Complete Rover Hardware Requirements<a class="headerlink" href="#complete-rover-hardware-requirements" title="Permalink to this headline">¶</a></h2>
+<p>An illustration of how components look and how they’re located in rover is given below:</p>
+<a class="reference internal image-reference" href="../_images/rovercomponents.png"><img alt="../roverstatic/images/rovercomponents.png" class="align-center" src="../_images/rovercomponents.png" style="width: 100%;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The complete list of materials to construct a rover is given in <a class="reference external" href="https://wiki.eclipse.org/APP4MC/Rover">APP4MC Rover Wiki</a>.</p>
+</div>
+</div>
+<div class="section" id="about-motor-driver-layer">
+<h2>2.2. About Motor Driver Layer<a class="headerlink" href="#about-motor-driver-layer" title="Permalink to this headline">¶</a></h2>
+<p>In order to drive the motors of the DFRobot rover chassis, <a class="reference external" href="https://www.pololu.com/product/2755/resources">Pololu MC33926 Motor Driver for Raspberry Pi</a> is used as a shield on top of Raspberry Pi 3.</p>
+<p>For convenience in applications, following resources might be helpful (taken from Pololu):</p>
+<ul class="simple">
+<li><strong>Schematic Diagram:</strong> <a class="reference external" href="https://www.pololu.com/file/0J894/pololu-dual-mc33926-motor-driver-for-raspberry-pi-schematic.pdf">Schematics</a></li>
+<li><strong>DXF Drill Drawing:</strong> <a class="reference external" href="https://www.pololu.com/file/0J1033/rpe02a01-drill.dxf">Drill drawing for designing a layer on top</a></li>
+<li><strong>Shield Pin Locations:</strong> <em>check image</em></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/motorshield.jpg"><img alt="../roverstatic/images/motorshield.jpg" class="align-center" src="../_images/motorshield.jpg" style="width: 60%;" /></a>
+</div>
+<div class="section" id="about-roversenselayer-revision-2">
+<h2>2.3. About RoverSenseLayer Revision 2<a class="headerlink" href="#about-roversenselayer-revision-2" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/roversenselayer.png"><img alt="../roverstatic/images/roversenselayer.png" class="align-center" src="../_images/roversenselayer.png" style="width: 80%;" /></a>
+<div class="section" id="roversenselayer-features">
+<h3>2.3.1. RoverSenseLayer Features<a class="headerlink" href="#roversenselayer-features" title="Permalink to this headline">¶</a></h3>
+<p><strong>RoverSenseLayer Revision 2</strong> is a customly made circuit board that is designed as a shield on top of Pololu MC33926 Motor Driver.
+RoverSenseLayer Revision 2 provides interfaces for OLED display, sensors, buttons, analog to digital converter, voltage converters, and more.</p>
+<p>Complete list of interfaces are given below:</p>
+<ul class="simple">
+<li>2x Push button</li>
+<li>1x Buzzer</li>
+<li>4x Sharp GP2Y0A41SK0F Analog Distance Sensor</li>
+<li>1x Pololu Dual MC33926 Motor Driver Connector</li>
+<li>1x A/D Converter MCP3208 DIP16</li>
+<li>2x I2C-tolerant Logic Level Converters</li>
+<li>1x HMC5883L Magnetometer</li>
+<li>1x GY-521Y Accelerometer</li>
+<li>1x OLED Display 0.96” I2C 4-pin</li>
+<li>1x DHT22 Temperature and Humidity Sensor</li>
+<li>2x HCSR-04 or Grove Ultrasonic Sensor</li>
+<li>4x Extra I2C lines for various sensors</li>
+</ul>
+<p>RoverSenseLayer Revision 2 design properties are as follows for production:</p>
+<ul class="simple">
+<li>Two-sided 82x67mm</li>
+<li>Minimum hole size 0.3mm</li>
+<li>Minimum track/spacing 6/6mil</li>
+<li>Cutouts required</li>
+<li>Plating required</li>
+<li>Montage drill holes M2.5</li>
+<li>(Preferrably) Red solder Mask</li>
+<li>(Preferrably) White silkscreen</li>
+</ul>
+</div>
+<div class="section" id="roversenselayer-schematics">
+<h3>2.3.2. RoverSenseLayer Schematics<a class="headerlink" href="#roversenselayer-schematics" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Schematics can be found in the following git repository:</p>
+<p class="last"><a class="reference external" href="https://github.com/app4mc-rover/rover-sense-layer-rev2">https://github.com/app4mc-rover/rover-sense-layer-rev2</a></p>
+</div>
+</div>
+<div class="section" id="roversenselayer-source-files">
+<h3>2.3.3. RoverSenseLayer Source Files<a class="headerlink" href="#roversenselayer-source-files" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>KiCad design files can be found in the following git repository:</p>
+<p class="last"><a class="reference external" href="https://github.com/app4mc-rover/rover-sense-layer-rev2">https://github.com/app4mc-rover/rover-sense-layer-rev2</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="hardware-setup-guide">
+<h2>2.4. Hardware Setup Guide<a class="headerlink" href="#hardware-setup-guide" title="Permalink to this headline">¶</a></h2>
+<p>The following image depicts the corresponding software to hardware mapping of proximity sensors and how they should be connected to RoverSenseLayer.</p>
+<a class="reference internal image-reference" href="../_images/roverconn.png"><img alt="../roverstatic/images/roverconn.png" class="align-center" src="../_images/roverconn.png" style="width: 100%;" /></a>
+<p>The following shows the pins used by the current roverapp software (the reference image from <a class="reference external" href="https://de.pinout.xyz/pinout/">https://de.pinout.xyz/pinout/</a>):</p>
+<a class="reference internal image-reference" href="../_images/rover_used_pins.png"><img alt="../roverstatic/images/rover_used_pins.png" class="align-center" src="../_images/rover_used_pins.png" style="width: 100%;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roverapp.html" class="btn btn-neutral float-right" title="3. Rover Software: roverapp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. Installation Instructions &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="8. Cross Development in Raspbian" href="cross.html"/>
+        <link rel="prev" title="6. Rover Telemetry UI: MQTT Client UI for Rover" href="rovertelemetry.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-you-begin">7.1. Before You Begin..</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#beginning-with-raspberry-pi">7.1.1. Beginning with Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-bluetooth">7.1.2. Enabling Bluetooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-i2c">7.1.3. Enabling I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-camera">7.1.4. Setting Up Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-an-access-point">7.1.5. Setting Up an Access Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#roverapp-installation">7.2. roverapp Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">7.2.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-installation-instructions">7.2.2. Manual Installation Instructions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-dependencies">7.2.2.1. Installing Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-roverapp">7.2.2.2. Installing roverapp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#roverweb-installation">7.3. roverweb Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.3.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.3.2. Manual Installation Instructions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.3.2.1. Installing Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-roverweb">7.3.2.2. Installing roverweb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>7. Installation Instructions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="installation-instructions">
+<h1>7. Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="before-you-begin">
+<h2>7.1. Before You Begin..<a class="headerlink" href="#before-you-begin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="beginning-with-raspberry-pi">
+<h3>7.1.1. Beginning with Raspberry Pi<a class="headerlink" href="#beginning-with-raspberry-pi" title="Permalink to this headline">¶</a></h3>
+<p>Getting started instructions are here: <a class="reference external" href="https://www.raspberrypi.org/help/quick-start-guide/2/">Quick Start Guide</a></p>
+<p>We advise you to use Raspbian Jessie or Raspbian Sketch from <a class="reference external" href="https://www.raspberrypi.org/downloads/raspbian/">this</a> website.</p>
+</div>
+<div class="section" id="enabling-bluetooth">
+<h3>7.1.2. Enabling Bluetooth<a class="headerlink" href="#enabling-bluetooth" title="Permalink to this headline">¶</a></h3>
+<p>In some Raspbian releases, bluetooth is pre-installed. In order to check if bluetooth is working execute the following command:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>hcitool scan
+service bluetooth status
+</pre></div>
+</td></tr></table></div>
+<p>In case the first command does not return with errors, that means that the bluetooth connection in Raspberry Pi is now available for use.
+The second command is used for checking if the bluetooth is active.
+If the first command results in an error, you can start the bluetooth service with the following commands:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install pi-bluetooth bluez bluez-tools blueman
+sudo systemctl start bluetooth
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>Use the following commands at your own RISK!!!</strong></p>
+<p>For older Raspbian Jessie distributions, there is a known issue of bluetooth not working properly. If you have such a problem, you can upgrade the
+distro version and use a specific kernel version which is working with bluetooth device. Following commands should be executed in order to do so:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get dist-upgrade
+sudo rm /etc/udev/rules.d/99-com.rules
+sudo apt-get -o Dpkg::Options::<span class="o">=</span><span class="s2">&quot;--force-confmiss&quot;</span> install --reinstall raspberrypi-sys-mods
+</pre></div>
+</td></tr></table></div>
+<p>If command above does not work, try the next one:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install raspberrypi-sys-mods
+</pre></div>
+</td></tr></table></div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">Y</span></code> to install the mods. Then do a kernel downgrade to version 4.4.50:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo systemctl reboot
+sudo rpi-update 52241088c1da59a359110d39c1875cda56496764
+</pre></div>
+</td></tr></table></div>
+<p>As a final step, you should add <code class="docutils literal notranslate"><span class="pre">btuart</span></code> to your <code class="docutils literal notranslate"><span class="pre">/etc/rc.local</span></code> and reboot your Raspberry Pi.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo reboot
+</pre></div>
+</td></tr></table></div>
+<p>After reboot, you can test if bluetooth is working:</p>
+<div class="last highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>hcitool scan
+service bluetooth status
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="enabling-i2c">
+<h3>7.1.3. Enabling I2C<a class="headerlink" href="#enabling-i2c" title="Permalink to this headline">¶</a></h3>
+<p>Enabling I2C is explained here: <a class="reference external" href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c">Adafruit: Configuring I2C</a></p>
+</div>
+<div class="section" id="setting-up-camera">
+<h3>7.1.4. Setting Up Camera<a class="headerlink" href="#setting-up-camera" title="Permalink to this headline">¶</a></h3>
+<p>How to set up the Raspberry Pi camera is explained here: <a class="reference external" href="https://www.raspberrypi.org/documentation/configuration/camera.md">Camera configuration</a></p>
+</div>
+<div class="section" id="setting-up-an-access-point">
+<h3>7.1.5. Setting Up an Access Point<a class="headerlink" href="#setting-up-an-access-point" title="Permalink to this headline">¶</a></h3>
+<p>Access point setup is explained here: <a class="reference external" href="https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/">Access Point Setup</a>.</p>
+<p>(Please use <code class="docutils literal notranslate"><span class="pre">192.168.168.1</span></code> IP address for the rover.)</p>
+</div>
+</div>
+<div class="section" id="roverapp-installation">
+<h2>7.2. roverapp Installation<a class="headerlink" href="#roverapp-installation" title="Permalink to this headline">¶</a></h2>
+<p>Installation procedure is tested with Raspberry Pi 3 / Raspbian Jessie and Raspbian Sketch. In case of any problems, please report to one of the project maintainers:</p>
+<ul class="simple">
+<li>Mustafa Özcelikörs &lt;<a class="reference external" href="mailto:mozcelikors&#37;&#52;&#48;gmail&#46;com">mozcelikors<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</li>
+<li>Robert Höttger &lt;<a class="reference external" href="mailto:robert&#46;hoettger&#37;&#52;&#48;fh-dortmund&#46;de">robert<span>&#46;</span>hoettger<span>&#64;</span>fh-dortmund<span>&#46;</span>de</a>&gt;</li>
+</ul>
+<div class="section" id="requirements">
+<h3>7.2.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<p>The following are the build-time dependencies required for the roverapp:</p>
+<ul class="simple">
+<li>build-essential</li>
+<li>cmake</li>
+<li>git-core</li>
+<li>python-pip Python package installer</li>
+<li>Python 2.7</li>
+<li>gcc</li>
+</ul>
+<p>The following are the run-time dependencies used for the roverapp:</p>
+<ul class="simple">
+<li>Raspbian or similar distro that uses the Raspberry Pi metadata (meta-raspberrypi)</li>
+<li>Access Point setup (with IP 192.168.168.1)</li>
+<li>Python 2.7</li>
+<li>psutil Python module</li>
+<li>wiringPi library</li>
+<li>raspicam-0.1.2 or raspicam-0.1.3 library</li>
+<li>OpenCV 3.2.0 library</li>
+<li>Json-Cpp library</li>
+<li>bluetooth-dev, bluez, pi-bluetooth libraries</li>
+<li>bcm2835 library</li>
+<li>(modified) Adafruit_GFX and Adafruit_SSD1306 libraries</li>
+<li>paho.mqtt.c libraries</li>
+</ul>
+</div>
+<div class="section" id="manual-installation-instructions">
+<h3>7.2.2. Manual Installation Instructions<a class="headerlink" href="#manual-installation-instructions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="installing-dependencies">
+<h4>7.2.2.1. Installing Dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="installing-build-time-dependencies">
+<h5>7.2.2.1.1. Installing build-time dependencies<a class="headerlink" href="#installing-build-time-dependencies" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="installing-python-2-7">
+<h6>7.2.2.1.1.1. Installing Python 2.7<a class="headerlink" href="#installing-python-2-7" title="Permalink to this headline">¶</a></h6>
+<p>Raspberry Pi 3 comes with Python 2.7 installed. For other Linux distributions, it might be required to install:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install python
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="installing-psutil">
+<h6>7.2.2.1.1.2. Installing psutil<a class="headerlink" href="#installing-psutil" title="Permalink to this headline">¶</a></h6>
+<p>psutil is a performance tool library that is written in Python and that is able to provide information about GNU/Linux-based systems.
+First, <code class="docutils literal notranslate"><span class="pre">python-pip</span></code> must be installed:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install python-pip
+pip install psutil
+</pre></div>
+</td></tr></table></div>
+<p>If you already have psutil installed, you can upgrade it:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>pip install psutil --upgrade
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="installing-other-build-time-dependencies">
+<h6>7.2.2.1.1.3. Installing other build-time dependencies<a class="headerlink" href="#installing-other-build-time-dependencies" title="Permalink to this headline">¶</a></h6>
+<p>Raspberry Pi 3 comes with gcc installed.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install build-essential git-core cmake
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="installing-run-time-dependencies">
+<h5>7.2.2.1.2. Installing run-time dependencies<a class="headerlink" href="#installing-run-time-dependencies" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="installing-opencv">
+<h6>7.2.2.1.2.1. Installing OpenCV<a class="headerlink" href="#installing-opencv" title="Permalink to this headline">¶</a></h6>
+<p>OpenCV installation is explained in <a class="reference external" href="https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html">this link</a>.</p>
+</div>
+<div class="section" id="installing-wiringpi">
+<h6>7.2.2.1.2.2. Installing wiringPi<a class="headerlink" href="#installing-wiringpi" title="Permalink to this headline">¶</a></h6>
+<p>Installation of wiringPi is explained in <a class="reference external" href="http://wiringpi.com/download-and-install/">this link</a>.</p>
+</div>
+<div class="section" id="installing-bluetooth">
+<h6>7.2.2.1.2.3. Installing bluetooth<a class="headerlink" href="#installing-bluetooth" title="Permalink to this headline">¶</a></h6>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get install bluez pi-bluetooth bluez-tools blueman libbluetooth-dev
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="installing-jsoncpp">
+<h6>7.2.2.1.2.4. Installing jsoncpp<a class="headerlink" href="#installing-jsoncpp" title="Permalink to this headline">¶</a></h6>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/pi
+git clone https://github.com/open-source-parsers/jsoncpp.git
+<span class="nb">cd</span> jsoncpp
+mkdir -p build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="installing-raspicam">
+<h6>7.2.2.1.2.5. Installing raspicam<a class="headerlink" href="#installing-raspicam" title="Permalink to this headline">¶</a></h6>
+<p>Installation of raspicam is explained in <a class="reference external" href="https://github.com/6by9/raspicam-0.1.3">this link</a>.</p>
+<p>To install raspicam, execute the following commands:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/pi
+git clone https://github.com/6by9/raspicam-0.1.3.git
+<span class="nb">cd</span> raspicam-0.1.3
+mkdir -p build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As an alternative you can use the following git repository: <a class="reference external" href="https://github.com/cedricve/raspicam.git">raspicam 0.1.2</a>.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If compilation using <code class="docutils literal notranslate"><span class="pre">make</span></code> command fails, one should make sure <code class="docutils literal notranslate"><span class="pre">libmmal.so</span></code> and <code class="docutils literal notranslate"><span class="pre">libmmal_core.so</span></code> is located in <code class="docutils literal notranslate"><span class="pre">/opt/vc/lib</span></code>. To install these libraries, one can do a Raspberry Pi firmware update: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">rpi-update</span></code>.</p>
+</div>
+</div>
+<div class="section" id="installing-paho-mqtt-c-libraries">
+<h6>7.2.2.1.2.6. Installing paho.mqtt.c libraries<a class="headerlink" href="#installing-paho-mqtt-c-libraries" title="Permalink to this headline">¶</a></h6>
+<p>To install paho.mqtt.c libraries for MQTT-based cloud communication, execute the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eclipse/paho.mqtt.c.git
+<span class="nb">cd</span> paho.mqtt.c
+make
+sudo make install
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="installing-roverapp">
+<h4>7.2.2.2. Installing roverapp<a class="headerlink" href="#installing-roverapp" title="Permalink to this headline">¶</a></h4>
+<p>Roverapp’s installation process is simplified by using <code class="docutils literal notranslate"><span class="pre">CMake</span></code> tool, a semi-automated Makefile generator for GCC compiler. The roverapp contains a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file which must be tailored after adding and linking libraries, objects, source files, and headers.
+As an example, the following customly created CMakeLists.txt file eases the process when compiling roverapp, provided that dependencies are installed.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#</span>
+<span class="c"># roverapp CMake file</span>
+<span class="c"># https://github.com/app4mc-rover/rover-app</span>
+<span class="c">#</span>
+
+<span class="c">#</span>
+<span class="c"># SETTINGS AND CMAKE CONFIG FINDING</span>
+<span class="c">#</span>
+
+<span class="nb">cmake_minimum_required</span> <span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.11</span><span class="p">)</span>
+<span class="nb">project</span> <span class="p">(</span><span class="s">roverapp</span><span class="p">)</span>
+
+<span class="c"># To find modules from other cmake-built projects that are searched with find_package,</span>
+<span class="c"># external cmake modules need to be provided. Those are typically named as Find&lt;package&gt;.cmake or &lt;package&gt;Config.cmake.</span>
+<span class="c"># Those must be added to the CMAKE_MODULE_PATH set below:</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_MODULE_PATH</span> <span class="o">${</span><span class="nv">CMAKE_MODULE_PATH</span><span class="o">}</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/ExternalCMakeModules</span><span class="p">)</span>
+
+<span class="c">#For find_package packages, export someextlib_DIR=/path/to/..</span>
+<span class="c"># Required packages</span>
+<span class="nb">find_package</span> <span class="p">(</span><span class="s">OpenCV</span> <span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span> <span class="p">(</span><span class="s">raspicam</span> <span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span> <span class="p">(</span><span class="s">Threads</span><span class="p">)</span>
+
+<span class="c">#Where to put binary files after &quot;make&quot;</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">EXECUTABLE_OUTPUT_PATH</span> <span class="o">${</span><span class="nv">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="s">/bin</span><span class="p">)</span>
+
+<span class="c">#Where to put library files after &quot;make&quot;</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">LIBRARY_OUTPUT_PATH</span> <span class="o">${</span><span class="nv">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="s">/libs</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c"># INCLUDE DIRECTORIES</span>
+<span class="c">#</span>
+
+<span class="c">#Include directories</span>
+<span class="nb">include_directories</span> <span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/include</span><span class="p">)</span>
+
+<span class="c">#Include driver headers</span>
+<span class="nb">include_directories</span> <span class="p">(</span><span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/include/drivers/oled_drivers</span><span class="p">)</span>
+
+<span class="c">#Include directories for external libraries</span>
+<span class="nb">include_directories</span><span class="p">(</span> <span class="o">${</span><span class="nv">OpenCV_INCLUDE_DIRS</span><span class="o">}</span> <span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span> <span class="o">${</span><span class="nv">raspicam_INCLUDE_DIRS</span><span class="o">}</span> <span class="p">)</span>
+<span class="c">#include_directories( ${jsoncpp_INCLUDE_DIRS} )</span>
+<span class="c">#include_directories( ${bluetooth_INCLUDE_DIRS} )</span>
+
+<span class="c">#</span>
+<span class="c"># LIBRARIES</span>
+<span class="c">#</span>
+
+<span class="c">#Add api</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">SHARED</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/api/basic_psys_rover.c</span><span class="p">)</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">CUSTOM_LIBS_DIR</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/libraries</span><span class="p">)</span>
+
+<span class="c">#Add our custom libraries</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">hono_interaction</span> <span class="s">SHARED</span>
+  <span class="o">${</span><span class="nv">CUSTOM_LIBS_DIR</span><span class="o">}</span><span class="s">/hono_interaction/hono_interaction.cpp</span><span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">pthread_distribution</span> <span class="s">SHARED</span>
+  <span class="o">${</span><span class="nv">CUSTOM_LIBS_DIR</span><span class="o">}</span><span class="s">/pthread_distribution_lib/pthread_distribution.cpp</span><span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">status_library</span> <span class="s">SHARED</span>
+  <span class="o">${</span><span class="nv">CUSTOM_LIBS_DIR</span><span class="o">}</span><span class="s">/status_library/status_library.cpp</span><span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">pthread_monitoring</span> <span class="s">SHARED</span>
+  <span class="o">${</span><span class="nv">CUSTOM_LIBS_DIR</span><span class="o">}</span><span class="s">/pthread_monitoring/collect_thread_name.cpp</span><span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">timing</span> <span class="s">SHARED</span>
+  <span class="o">${</span><span class="nv">CUSTOM_LIBS_DIR</span><span class="o">}</span><span class="s">/timing/timing.cpp</span><span class="p">)</span>
+
+<span class="c">#Add tasks</span>
+<span class="c">#Add all files to a variable ROVERAPP_TASK_FILES</span>
+<span class="nb">file</span> <span class="p">(</span><span class="s">GLOB_RECURSE</span> <span class="s">ROVERAPP_TASK_FILES</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/tasks/*.cpp</span><span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">SHARED</span> <span class="o">${</span><span class="nv">ROVERAPP_TASK_FILES</span><span class="o">}</span><span class="p">)</span>
+
+
+<span class="c">#Add drivers</span>
+<span class="nb">file</span> <span class="p">(</span><span class="s">GLOB_RECURSE</span> <span class="s">ROVERAPP_DRIVER_FILES</span>
+  <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/drivers/oled_drivers/*.c</span>
+  <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/drivers/oled_drivers/*.cpp</span>
+<span class="p">)</span>
+<span class="nb">add_library</span> <span class="p">(</span><span class="s">roverappdrivers</span> <span class="s">SHARED</span> <span class="o">${</span><span class="nv">ROVERAPP_DRIVER_FILES</span><span class="o">}</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c">#  EXECUTABLE</span>
+<span class="c">#</span>
+
+<span class="c">#Add main executable</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">roverapp</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/src/roverapp.cpp</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c">#  LINKING TO ROVER API</span>
+<span class="c">#</span>
+
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapi</span> <span class="s">wiringPi</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapi</span> <span class="s">wiringPiDev</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">hono_interaction</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">pthread_distribution</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">status_library</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">pthread_monitoring</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapi</span> <span class="s">timing</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapi</span> <span class="s">roverappdrivers</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c">#  LINKING TO ROVER TASKS</span>
+<span class="c">#</span>
+
+<span class="c">#Link external libraries</span>
+<span class="c"># Search with sudo find / -name *libx*</span>
+<span class="c"># If there is an x.so, you can link x library</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">opencv_core</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">opencv_imgproc</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">opencv_highgui</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">jsoncpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">bluetooth</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">pthread</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">wiringPi</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">wiringPiDev</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">raspicam</span><span class="p">)</span>
+
+
+<span class="c">#Linker actions to link our libraries to executable</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapptasks</span> <span class="s">hono_interaction</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapptasks</span> <span class="s">pthread_distribution</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapptasks</span> <span class="s">status_library</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapptasks</span> <span class="s">pthread_monitoring</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapptasks</span> <span class="s">timing</span><span class="p">)</span>
+
+<span class="c">#Link api</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">roverapi</span><span class="p">)</span>
+
+<span class="c">#Link drivers</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapptasks</span> <span class="s">roverappdrivers</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c"># LINKING TO MAIN EXECUTABLE</span>
+<span class="c">#</span>
+
+<span class="c">#Link external libraries</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapp</span> <span class="s">pthread</span><span class="p">)</span>
+
+<span class="c">#Link api</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapp</span> <span class="s">roverapi</span><span class="p">)</span>
+
+<span class="c">#Linker actions to link our libraries to executable</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">hono_interaction</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">pthread_distribution</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">status_library</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">pthread_monitoring</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">timing</span><span class="p">)</span>
+
+<span class="c">#Link tasks</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">roverapp</span> <span class="s">roverapptasks</span><span class="p">)</span>
+
+<span class="c">#Link drivers</span>
+<span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">roverapp</span> <span class="s">roverappdrivers</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c"># INSTALLING</span>
+<span class="c">#</span>
+
+<span class="c">#Install binary, shared library, static library (archives)</span>
+<span class="nb">install</span><span class="p">(</span>
+  <span class="s">TARGETS</span> <span class="s">roverapp</span> <span class="s">roverapi</span>
+        <span class="s">roverapptasks</span>
+        <span class="s">roverappdrivers</span>
+        <span class="s">hono_interaction</span>
+        <span class="s">status_library</span>
+        <span class="s">pthread_monitoring</span>
+        <span class="s">timing</span> <span class="s">pthread_distribution</span>
+  <span class="s">PUBLIC_HEADER</span>
+  <span class="s">RUNTIME</span> <span class="s">DESTINATION</span> <span class="s">/usr/bin</span>
+  <span class="s">LIBRARY</span> <span class="s">DESTINATION</span> <span class="s">/usr/lib</span>
+  <span class="s">ARCHIVE</span> <span class="s">DESTINATION</span> <span class="s">/usr/lib</span><span class="p">)</span>
+
+<span class="c">#Copy/install files to a certain static directory</span>
+<span class="nb">install</span><span class="p">(</span><span class="s">FILES</span> <span class="o">${</span><span class="nv">CMAKE_SOURCE_DIR</span><span class="o">}</span><span class="s">/scripts/read_core_usage.py</span>
+  <span class="s">DESTINATION</span> <span class="s">/opt/rover-app/scripts/</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To install roverapp, the following command should be executed:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git clone https://github.com/app4mc-rover/rover-app.git
+<span class="nb">cd</span> rover-app
+mkdir -p build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If the installation process complains about not being able to find <code class="docutils literal notranslate"><span class="pre">FindOpenCV.cmake</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenCVConfig.cmake</span></code>, or any <code class="docutils literal notranslate"><span class="pre">.cmake</span></code> file for that matter, the file must be searched and exported to the environment with commands such as the following. Then building should be done such as the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo find / -name *OpenCVConfig.cmake*
+<span class="nb">cd</span> build
+sudo <span class="nv">OpenCV_DIR</span><span class="o">=</span>&lt;path/to/OpenCVConfig.cmake&gt; cmake ..
+make
+sudo make install
+</pre></div>
+</div>
+<p>Same goes with <code class="docutils literal notranslate"><span class="pre">raspicam</span></code>:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo find / -name *raspicamConfig.cmake*
+<span class="nb">cd</span> build
+sudo <span class="nv">OpenCV_DIR</span><span class="o">=</span>&lt;path/to/raspicamConfig.cmake&gt; cmake ..
+make
+sudo make install
+</pre></div>
+</div>
+</div>
+<p>If desired, the automatic installation script can be used:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git clone https://github.com/app4mc-rover/rover-app.git
+<span class="nb">cd</span> rover-app
+sudo ./install_roverapp.sh
+</pre></div>
+</td></tr></table></div>
+<p>After installation, roverapp can be run by the following command:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo ./roverapp
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Use the following if raspicam complains about not being able to find cmake file:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo <span class="nv">raspicam_DIR</span><span class="o">=</span>/home/pi/raspicam-0.1.3/build/ ./install_roverapp.sh
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="roverweb-installation">
+<h2>7.3. roverweb Installation<a class="headerlink" href="#roverweb-installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>7.3.1. Requirements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The following are the build-time dependencies required for the roverweb:</p>
+<ul class="simple">
+<li>git-core</li>
+</ul>
+<p>The following are the run-time used for the roverweb:</p>
+<ul class="simple">
+<li>Raspbian or similar distro that uses the Raspberry Pi metadata (meta-raspberrypi)</li>
+<li>Access Point setup (with IP 192.168.168.1)</li>
+<li>node.js with version 8.x or higher</li>
+<li>node.js modules: net, connect, server-static, http, socket.io, express, path, mqtt</li>
+<li>mjpg-streamer-experimental</li>
+<li>curl</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>7.3.2. Manual Installation Instructions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>7.3.2.1. Installing Dependencies<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h5>7.3.2.1.1. Installing build-time dependencies<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<p>The following are must-have build-time dependencies that are partially required by not only roverweb, but also many open-source packages.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get install git-core
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="installing-curl">
+<h6>7.3.2.1.1.1. Installing curl<a class="headerlink" href="#installing-curl" title="Permalink to this headline">¶</a></h6>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install curl
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h5>7.3.2.1.2. Installing run-time dependencies<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="installing-node-js-and-its-required-modules">
+<h6>7.3.2.1.2.1. Installing node.js and its required modules<a class="headerlink" href="#installing-node-js-and-its-required-modules" title="Permalink to this headline">¶</a></h6>
+<p>For roverweb to serve web-pages and handle communications, node.js is an important dependency.
+The following commands can be used to download and install node.js:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get update
+curl -sL https://deb.nodesource.com/setup_8.x <span class="p">|</span> sudo -E bash -
+sudo apt install nodejs
+</pre></div>
+</td></tr></table></div>
+<p>At this point, if the following command does not result in any errors, that means that node is successfully installed:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>node -v
+</pre></div>
+</td></tr></table></div>
+<p>There are also node.js modules which are required for roverweb. Those modules must be installed by running the following:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo npm install net connect serve-static http socket.io express path mqtt
+</pre></div>
+</td></tr></table></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In case of problems while running roverweb, do this step after navigation to project directory.</p>
+</div>
+</div>
+<div class="section" id="installing-mjpg-streamer-experimental">
+<h6>7.3.2.1.2.2. Installing mjpg-streamer-experimental<a class="headerlink" href="#installing-mjpg-streamer-experimental" title="Permalink to this headline">¶</a></h6>
+<p>One particular mjpg-streamer version provides streaming with Raspberry Pi.</p>
+<p>In order to install the module, execute the following commands:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo apt-get install cmake libjpeg8-dev
+
+git clone https://github.com/jacksonliam/mjpg-streamer.git
+
+<span class="nb">cd</span> mjpg-streamer-experimental
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="installing-roverweb">
+<h4>7.3.2.2. Installing roverweb<a class="headerlink" href="#installing-roverweb" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="downloading-fetching-roverweb">
+<h5>7.3.2.2.1. Downloading (Fetching) roverweb<a class="headerlink" href="#downloading-fetching-roverweb" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>git clone https://github.com/app4mc-rover/rover-web.git
+</pre></div>
+</td></tr></table></div>
+<p>After roverweb is installed, there is no need to install it to any static location. You can continue by running the server: <a class="reference internal" href="roverweb.html#roverwebstart"><span class="std std-ref">roverweb Getting started</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cross.html" class="btn btn-neutral float-right" title="8. Cross Development in Raspbian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rovertelemetry.html" class="btn btn-neutral" title="6. Rover Telemetry UI: MQTT Client UI for Rover" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

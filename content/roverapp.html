@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Rover Software: roverapp &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="4. Rover API Documentation" href="roverapi.html"/>
+        <link rel="prev" title="2. Rover Hardware" href="roverhw.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Rover Software: roverapp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-roverapp">3.1. What is roverapp?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roverapp-infrastructure">3.2. roverapp Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-roverapp">3.3. Downloading roverapp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started-with-roverapp">3.4. Getting started with roverapp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">3.4.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-roverapp">3.4.2. Running roverapp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#roverapp-complete-reference">3.5. roverapp Complete Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drivers">3.5.1. Drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#oled-libraries">3.5.1.1. OLED Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#created-libraries">3.5.2. Created Libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#status-library">3.5.2.1. status_library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hono-interaction">3.5.2.2. hono_interaction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pthread-monitoring">3.5.2.3. pthread_monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pthread-distribution-lib">3.5.2.4. pthread_distribution_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timing">3.5.2.5. timing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tasks-and-threads">3.5.3. Tasks and Threads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rovertelemetry.html">6. Rover Telemetry UI: MQTT Client UI for Rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Rover Software: roverapp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/roverapp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="rover-software-roverapp">
+<h1>3. Rover Software: roverapp<a class="headerlink" href="#rover-software-roverapp" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/roverapp_logo.png"><img alt="../roverstatic/images/roverapp_logo.png" class="align-center" src="../_images/roverapp_logo.png" style="width: 40%;" /></a>
+<div class="section" id="what-is-roverapp">
+<h2>3.1. What is roverapp?<a class="headerlink" href="#what-is-roverapp" title="Permalink to this headline">¶</a></h2>
+<p><strong>Roverapp</strong> is an open-source C/C++ project for single board Linux computers (Raspberry Pi), especially designed for <strong>rover</strong>.
+It features multi-threaded schedulable and traceable software under GNU/Linux environment. For multi-threading, POSIX threads (Pthreads)
+and its synchronization implementations such as mutexes are widely used.</p>
+<p><strong>Roverapp</strong> complete feature list is given below:</p>
+<ul class="simple">
+<li>Multi-threaded, schedulable and traceable embedded software.</li>
+<li>Cloud communication to <a class="reference external" href="https://www.eclipse.org/hono/api/">Hono 0.5-M9</a> infrastructure using REST API, using customly created <strong>hono_interaction</strong> library.</li>
+<li>Utilized drivers for Linux modules such as bluetooth (bluetooth-dev).</li>
+<li>I2C drivers and applications (threads) for OLED display, SRF02 ultrasonic sensor, HMC5883L magnetometer, GY-521Y accelerometer, etc.</li>
+<li>Temperature and humidity measurement using DHT22 sensor.</li>
+<li>Reactive implementations for TCP socket server and TCP socket client, with proper JSON formatted data for communication.</li>
+<li>OLED display application that is able to display bluetooth, Hono cloud, ethernet, wireless interface, and internet with the help of <strong>status_library</strong> library.</li>
+<li>OpenCV 2.4.9 utilization and image processing application (currently Traffic cone detection).</li>
+<li>SHARP Analog Proximity measurement sensor interfacing and implementations.</li>
+<li>SRF-02, HCSR-04, and Grove Ultrasonic sensor interfacing and implementations.</li>
+<li>Motor driving implementations.</li>
+<li>Timing measurement implementations with the help of <strong>timing</strong> library.</li>
+<li>CPU core utilization measurement implementation.</li>
+<li>Adaptive Cruise Control behavior implementation.</li>
+<li>Parking behavior implementation.</li>
+<li>Booth mode implementations.</li>
+<li>Implementations for bluetooth-based driving from Android phones.</li>
+</ul>
+</div>
+<div class="section" id="roverapp-infrastructure">
+<h2>3.2. roverapp Infrastructure<a class="headerlink" href="#roverapp-infrastructure" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/roverapp_infra.png"><img alt="../roverstatic/images/roverapp_infra.png" class="align-center" src="../_images/roverapp_infra.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="downloading-roverapp">
+<h2>3.3. Downloading roverapp<a class="headerlink" href="#downloading-roverapp" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Rover-app source code is maintained under the following repository:</p>
+<p class="last"><a class="reference external" href="https://github.com/app4mc-rover/rover-app">https://github.com/app4mc-rover/rover-app</a></p>
+</div>
+</div>
+<div class="section" id="getting-started-with-roverapp">
+<h2>3.4. Getting started with roverapp<a class="headerlink" href="#getting-started-with-roverapp" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>3.4.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to see how roverapp is installed and compiled, please see <a class="reference internal" href="installation.html#roverappinstallation"><span class="std std-ref">roverapp Installation</span></a> section.</p>
+</div>
+</div>
+<div class="section" id="running-roverapp">
+<h3>3.4.2. Running roverapp<a class="headerlink" href="#running-roverapp" title="Permalink to this headline">¶</a></h3>
+<p>After installation, roverapp can be run by the following command from project root:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo ./roverapp
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="roverapp-complete-reference">
+<h2>3.5. roverapp Complete Reference<a class="headerlink" href="#roverapp-complete-reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="drivers">
+<h3>3.5.1. Drivers<a class="headerlink" href="#drivers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="oled-libraries">
+<h4>3.5.1.1. OLED Libraries<a class="headerlink" href="#oled-libraries" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="created-libraries">
+<h3>3.5.2. Created Libraries<a class="headerlink" href="#created-libraries" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="status-library">
+<h4>3.5.2.1. status_library<a class="headerlink" href="#status-library" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="hono-interaction">
+<h4>3.5.2.2. hono_interaction<a class="headerlink" href="#hono-interaction" title="Permalink to this headline">¶</a></h4>
+<p>The current release covers communication with Eclipse Hono version 0.5-M9.</p>
+<div class="section" id="registering-a-device">
+<h5>3.5.2.2.1. Registering a Device<a class="headerlink" href="#registering-a-device" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="arguments">
+<h6>3.5.2.2.1.1. Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h6>
+<p>In order to register a device to the Eclipse Hono instance, <code class="docutils literal notranslate"><span class="pre">registerDeviceToHonoInstance</span></code> should be used. This function is defined as follows:</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">registerDeviceToHonoInstance</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">host_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">tenant_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">device_id</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The function takes the following arguments:</p>
+<ul class="simple">
+<li>Host name to connect (char *)</li>
+<li>Port to connect (int)</li>
+<li>Tenant name (char *)</li>
+<li>Device ID (char *)</li>
+</ul>
+</div>
+<div class="section" id="operation">
+<h6>3.5.2.2.1.2. Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h6>
+<p>This function constructs a curl call on the system by constructing a string such as the following:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;device-id&quot;: &quot;4711&quot;}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">idial</span><span class="o">.</span><span class="n">institute</span><span class="p">:</span><span class="mi">28080</span><span class="o">/</span><span class="n">registration</span><span class="o">/</span><span class="n">DEFAULT_TENANT</span>
+</pre></div>
+</td></tr></table></div>
+<p>Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.</p>
+</div>
+</div>
+<div class="section" id="sending-telemetry-data-to-eclipse-hono-instance">
+<h5>3.5.2.2.2. Sending Telemetry Data to Eclipse Hono Instance<a class="headerlink" href="#sending-telemetry-data-to-eclipse-hono-instance" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id1">
+<h6>3.5.2.2.2.1. Arguments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h6>
+<p>In order to send telemetry data to the Eclipse Hono instance, <code class="docutils literal notranslate"><span class="pre">sendTelemetryDataToHonoInstance</span></code> should be used. This function is defined as follows:</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">sendTelemetryDataToHonoInstance</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">host_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">tenant_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">device_id</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">user</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">password</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">field</span><span class="p">,</span> <span class="kt">double</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The function takes the following arguments:</p>
+<ul class="simple">
+<li>Host name to connect (char *)</li>
+<li>Port to connect (int)</li>
+<li>Tenant name (char *)</li>
+<li>Device ID (char *)</li>
+<li>Username (char *)</li>
+<li>Password (char *)</li>
+<li>Field name (char *)</li>
+<li>Value (double)</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h6>3.5.2.2.2.2. Operation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h6>
+<p>This function constructs a curl call on the system by constructing a string such as the following:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>curl -X POST -i -u sensor1@DEFAULT_TENANT:hono-secret -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --data-binary <span class="s1">&#39;{&quot;temp&quot;: 5}&#39;</span> http://idial.institute:8080/telemetry
+</pre></div>
+</td></tr></table></div>
+<p>Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.</p>
+</div>
+</div>
+<div class="section" id="sending-event-data-to-eclipse-hono-instance">
+<h5>3.5.2.2.3. Sending Event Data to Eclipse Hono Instance<a class="headerlink" href="#sending-event-data-to-eclipse-hono-instance" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id3">
+<h6>3.5.2.2.3.1. Arguments<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h6>
+<p>In order to send event data to the Eclipse Hono instance, <code class="docutils literal notranslate"><span class="pre">sendEventDataToHonoInstance</span></code> should be used. This function is defined as follows:</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">sendEventDataToHonoInstance</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">host_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">tenant_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">device_id</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">user</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">password</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">field</span><span class="p">,</span> <span class="kt">double</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The function takes the following arguments:</p>
+<ul class="simple">
+<li>Host name to connect (char *)</li>
+<li>Port to connect (int)</li>
+<li>Tenant name (char *)</li>
+<li>Device ID (char *)</li>
+<li>Username (char *)</li>
+<li>Password (char *)</li>
+<li>Field name (char *)</li>
+<li>Value (double)</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h6>3.5.2.2.3.2. Operation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h6>
+<p>This function constructs a curl call on the system by constructing a string such as the following:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>curl -X POST -i -u sensor1@DEFAULT_TENANT:hono-secret -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --data-binary <span class="s1">&#39;{&quot;temp&quot;: 5}&#39;</span> http://idial.institute:8080/event
+</pre></div>
+</td></tr></table></div>
+<p>Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.</p>
+</div>
+</div>
+<div class="section" id="handling-rest-api-http-responses-and-status-codes">
+<h5>3.5.2.2.4. Handling REST API /HTTP Responses and Status Codes<a class="headerlink" href="#handling-rest-api-http-responses-and-status-codes" title="Permalink to this headline">¶</a></h5>
+<p>In order to handle the response codes of HTTP requests, <code class="docutils literal notranslate"><span class="pre">handleCode</span></code> function is developed:</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="kt">int</span> <span class="n">handleCode</span><span class="p">(</span><span class="kt">int</span> <span class="n">code</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The commonly occuring HTTP responses are parsed and displayed in this library within <code class="docutils literal notranslate"><span class="pre">handleCode</span></code> function.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="8%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error Code</th>
+<th class="head">Meaning</th>
+<th class="head">Status</th>
+<th class="head">Explanation in Hono Terminology</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200</td>
+<td>OK</td>
+<td>1</td>
+<td>Device registration is successful</td>
+</tr>
+<tr class="row-odd"><td>201</td>
+<td>Created</td>
+<td>1</td>
+<td>Device registration is successful</td>
+</tr>
+<tr class="row-even"><td>202</td>
+<td>Accepted</td>
+<td>1</td>
+<td>Telemetry data is accepted at Hono instance</td>
+</tr>
+<tr class="row-odd"><td>200..209</td>
+<td>&#160;</td>
+<td>1</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>400</td>
+<td>Bad Request</td>
+<td>0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>403</td>
+<td>Forbidden</td>
+<td>0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>409</td>
+<td>Conflict</td>
+<td>0</td>
+<td>Device is already registered</td>
+</tr>
+<tr class="row-odd"><td>400..409</td>
+<td>&#160;</td>
+<td>0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>503</td>
+<td>Service Unavailable</td>
+<td>0</td>
+<td>There is no consumer running. Please create a consumer</td>
+</tr>
+</tbody>
+</table>
+<p>In the library, the meanings of commonlu occurring error codes are considered and status codes are generated.
+Status or exit code is what the functions in this library returns as an integer.</p>
+<p>The following (non-UNIX) convention is adapted:</p>
+<ul class="simple">
+<li>1 → Successful exit</li>
+<li>0 → Non-successful exit</li>
+</ul>
+<p>The status value can be used to check if functions succeed. Please see <cite>Example Usage</cite> section.</p>
+</div>
+<div class="section" id="debugging">
+<h5>3.5.2.2.5. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h5>
+<p>The header file of the library contains two compiler directives for easy debugging of console output.</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DEBUG_HTTP_RESPONSE 1</span>
+<span class="cp">#define DEBUG_DEVICE_REGISTRATION 1</span>
+</pre></div>
+</td></tr></table></div>
+<p>One can either define or comment/undefine these compiler directives.
+The first compiler directive is used for displaying the strings on console such as:</p>
+<ul class="simple">
+<li>Constructed curl command</li>
+<li>Parsed HTTP response code</li>
+<li>The entire pipe that is returned</li>
+</ul>
+<p>The second compiler directive is used for displaying the same information, but only in the device registration function.
+Ideally, since device is registered only once but the data is send constantly, it is advised to see this information at the device registration function, but not for the other functions, to prevent the console overhead.
+Due to the aforementioned reason, it is advised to keep this part as follows:</p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//#define DEBUG_HTTP_RESPONSE 1</span>
+<span class="cp">#define DEBUG_DEVICE_REGISTRATION 1</span>
+</pre></div>
+</td></tr></table></div>
+<p>But uncomment the first line only when it is suspected that something regarding cloud connection is failing.</p>
+<p>When there is no internet connection with <code class="docutils literal notranslate"><span class="pre">DEBUG_HTTP_RESPONSE</span></code> defined, a message such as the following is displayed: <code class="docutils literal notranslate"><span class="pre">Code:</span> <span class="pre">0</span></code>.</p>
+</div>
+<div class="section" id="example-usage">
+<h5>3.5.2.2.6. Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;hono_interaction.h&quot;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span>
+          <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+          <span class="kt">double</span> <span class="n">bearing_val</span><span class="p">;</span>
+          <span class="n">status</span> <span class="o">=</span> <span class="n">registerDeviceToHonoInstance</span><span class="p">(</span><span class="s">&quot;idial.institute&quot;</span><span class="p">,</span><span class="mi">28080</span><span class="p">,</span><span class="s">&quot;DEFAULT_TENANT&quot;</span><span class="p">,</span> <span class="s">&quot;roverBearing&quot;</span><span class="p">);</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">// If DEBUG_HTTP_RESPONSE is commented, you can manually handle errors by using the status/exit code</span>
+          <span class="p">{</span>
+                        <span class="n">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Device is not registered&quot;</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+          <span class="p">{</span>
+                        <span class="n">bearing_val</span> <span class="o">=</span> <span class="mf">0.5001</span><span class="p">;</span>
+                        <span class="n">status</span> <span class="o">=</span> <span class="n">sendTelemetryDataToHonoInstance</span><span class="p">(</span><span class="s">&quot;idial.institute&quot;</span><span class="p">,</span><span class="mi">8080</span><span class="p">,</span><span class="s">&quot;DEFAULT_TENANT&quot;</span><span class="p">,</span> <span class="s">&quot;4711&quot;</span><span class="p">,</span><span class="s">&quot;roverBearing&quot;</span><span class="p">,</span> <span class="n">bearing_shared</span><span class="p">);</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">// If DEBUG_HTTP_RESPONSE is commented, you can manually handle errors by using the status/exit code</span>
+                        <span class="p">{</span>
+                                  <span class="n">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Data is not sent&quot;</span><span class="p">);</span>
+                        <span class="p">}</span>
+          <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resources">
+<h5>3.5.2.2.7. Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h5>
+<p>The material provided for hono_interaction uses Hono API, which is provided here: <a class="reference external" href="https://www.eclipse.org/hono/api/">Hono API</a>.</p>
+</div>
+</div>
+<div class="section" id="pthread-monitoring">
+<h4>3.5.2.3. pthread_monitoring<a class="headerlink" href="#pthread-monitoring" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="pthread-distribution-lib">
+<h4>3.5.2.4. pthread_distribution_lib<a class="headerlink" href="#pthread-distribution-lib" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="timing">
+<h4>3.5.2.5. timing<a class="headerlink" href="#timing" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="tasks-and-threads">
+<h3>3.5.3. Tasks and Threads<a class="headerlink" href="#tasks-and-threads" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roverapi.html" class="btn btn-neutral float-right" title="4. Rover API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roverhw.html" class="btn btn-neutral" title="2. Rover Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

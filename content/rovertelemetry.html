@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. Rover Telemetry UI: MQTT Client UI for Rover &mdash; Rover r0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Rover r0 documentation" href="../index.html"/>
+        <link rel="next" title="7. Installation Instructions" href="installation.html"/>
+        <link rel="prev" title="5. Rover Web UI: roverweb" href="roverweb.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rover
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverhw.html">2. Rover Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapp.html">3. Rover Software: roverapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverapi.html">4. Rover API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roverweb.html">5. Rover Web UI: roverweb</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Rover Telemetry UI: MQTT Client UI for Rover</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">6.1. Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operation">6.2. Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-rover-telemetry-ui">6.3. Using rover-telemetry-ui</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">7. Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cross.html">8. Cross Development in Raspbian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto.html">9. Yocto Layer: meta-rover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">10. Ready Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aglimg.html">11. Starting with AGL Image - Quick Start (for Rover 0.1.0)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">12. Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extlinks.html">13. External Web Links</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rover</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>6. Rover Telemetry UI: MQTT Client UI for Rover</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/rovertelemetry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="rover-telemetry-ui-mqtt-client-ui-for-rover">
+<h1>6. Rover Telemetry UI: MQTT Client UI for Rover<a class="headerlink" href="#rover-telemetry-ui-mqtt-client-ui-for-rover" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/rovertelemetry_logo.png"><img alt="../roverstatic/images/rovertelemetry_logo.png" class="align-center" src="../_images/rovertelemetry_logo.png" style="width: 50%;" /></a>
+<div class="section" id="description">
+<h2>6.1. Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Rover Telemetry UI (<strong>rover-telemetry-ui</strong>) is designed to communicate with multi-agent rovers using MQTT protocol over cloud.
+It is built with node.js as a web application and it is used for reactive MQTT communication.
+Rover Telemery UI is shown below:</p>
+<a class="reference internal image-reference" href="../_images/rovertelemetryui_screen.png"><img alt="../roverstatic/images/rovertelemetryui_screen.png" class="align-center" src="../_images/rovertelemetryui_screen.png" style="width: 100%;" /></a>
+</div>
+<div class="section" id="operation">
+<h2>6.2. Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
+<p>Upon connection, rover-telemetry-ui subscribes to topic <code class="docutils literal notranslate"><span class="pre">rover/&lt;roverID&gt;/telemetry</span></code>, which is redirected from <code class="docutils literal notranslate"><span class="pre">telemetry</span></code> topic on the Eclipse Hono side.</p>
+<a class="reference internal image-reference" href="../_images/cloudinfra1.png"><img alt="../roverstatic/images/cloudinfra1.png" class="align-center" src="../_images/cloudinfra1.png" style="width: 100%;" /></a>
+<p><code class="docutils literal notranslate"><span class="pre">telemetry</span></code> topic retrieves sensor and core usage information in following format:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     <span class="p">{</span>
+             <span class="s2">&quot;gy521&quot;</span><span class="o">:</span><span class="p">{</span>
+                     <span class="s2">&quot;accel&quot;</span><span class="o">:</span><span class="p">{</span>
+                             <span class="s2">&quot;x&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="s2">&quot;y&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="s2">&quot;z&quot;</span><span class="o">:-</span><span class="mi">1</span>
+                     <span class="p">},</span>
+                     <span class="s2">&quot;angle&quot;</span><span class="o">:</span><span class="p">{</span>
+                             <span class="s2">&quot;x&quot;</span><span class="o">:-</span><span class="mf">35.264389038085938</span><span class="p">,</span>
+                             <span class="s2">&quot;y&quot;</span><span class="o">:-</span><span class="mf">35.264389038085938</span><span class="p">,</span>
+                             <span class="s2">&quot;z&quot;</span><span class="o">:-</span><span class="mf">54.735610961914062</span>
+                     <span class="p">},</span>
+                     <span class="s2">&quot;gyro&quot;</span><span class="o">:</span><span class="p">{</span>
+                             <span class="s2">&quot;x&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="s2">&quot;y&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="s2">&quot;z&quot;</span><span class="o">:-</span><span class="mi">1</span>
+                     <span class="p">}</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;hmc5883l&quot;</span><span class="o">:</span><span class="p">{</span>
+                     <span class="s2">&quot;bearing&quot;</span><span class="o">:</span><span class="mf">47.366317749023438</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;infrared&quot;</span><span class="o">:</span><span class="p">{</span>
+                     <span class="s2">&quot;frontleft&quot;</span><span class="o">:</span><span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;frontright&quot;</span><span class="o">:</span><span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;rearleft&quot;</span><span class="o">:</span><span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;rearright&quot;</span><span class="o">:</span><span class="mf">100.0</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;ultrasonic&quot;</span><span class="o">:</span><span class="p">{</span>
+                     <span class="s2">&quot;front&quot;</span><span class="o">:</span><span class="mf">0.0</span><span class="p">,</span>
+                     <span class="s2">&quot;rear&quot;</span><span class="o">:</span><span class="mf">0.0</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;cores&quot;</span><span class="o">:</span><span class="p">{</span>
+                     <span class="s2">&quot;core0&quot;</span><span class="o">:</span><span class="mf">55.099998474121094</span><span class="p">,</span>
+                     <span class="s2">&quot;core1&quot;</span><span class="o">:</span><span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;core2&quot;</span><span class="o">:</span><span class="mf">100.0</span><span class="p">,</span>
+                     <span class="s2">&quot;core3&quot;</span><span class="o">:</span><span class="mf">18.899999618530273</span>
+             <span class="p">}</span>
+     <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>If connected, driving buttons can be used to send telemetry data to rover. This message is published to <code class="docutils literal notranslate"><span class="pre">rover/&lt;roverID&gt;/RoverDriving/control</span></code> topic in the following format:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+             <span class="s2">&quot;mode&quot;</span><span class="o">:&lt;</span><span class="kr">int</span> <span class="nx">mode</span><span class="o">&gt;</span><span class="p">,</span>
+             <span class="s2">&quot;command&quot;</span><span class="o">:&lt;</span><span class="kr">char</span> <span class="nx">command</span><span class="o">&gt;</span><span class="p">,</span>
+             <span class="s2">&quot;speed&quot;</span><span class="o">:&lt;</span><span class="kr">int</span> <span class="nx">speed</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;speed&quot;</span></code> entry is an integer value between 360 (lowest speed) and 480 (highest speed) for the rover.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;command&quot;</span></code> entry indicates many integrated functions, such as the ones listed below:</p>
+<ul class="simple">
+<li>F → Stop Movement</li>
+<li>Q → Go Forward-Left</li>
+<li>W → Go Forward</li>
+<li>E → Go Forward-Right</li>
+<li>A → Go Backward-Left</li>
+<li>S → Go Backward</li>
+<li>D → Go Backward-Right</li>
+<li>J → Turn Left On Spot</li>
+<li>K → Turn Right On Spot</li>
+<li>R → Shutdown Rover</li>
+</ul>
+<p>In rover-telemetry-ui only <code class="docutils literal notranslate"><span class="pre">&quot;mode&quot;:0</span></code> is supported, which indicated manual driving.</p>
+</div>
+<div class="section" id="using-rover-telemetry-ui">
+<h2>6.3. Using rover-telemetry-ui<a class="headerlink" href="#using-rover-telemetry-ui" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Project is hosted in the repository: <a class="reference external" href="https://github.com/app4mc-rover/rover-telemetry-ui.git">https://github.com/app4mc-rover/rover-telemetry-ui.git</a>.</p>
+</div>
+<p>To download:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/app4mc-rover/rover-telemetry-ui.git</span>
+</pre></div>
+</td></tr></table></div>
+<p>To download dependencies (If you don’t have node.js installed, first install node.js):</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">cd</span> <span class="nx">rover</span><span class="o">-</span><span class="nx">telemetry</span><span class="o">-</span><span class="nx">ui</span>
+<span class="nx">sudo</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">net</span> <span class="nx">connect</span> <span class="nx">serve</span><span class="o">-</span><span class="kr">static</span> <span class="nx">http</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">io</span> <span class="nx">express</span> <span class="nx">path</span> <span class="nx">mqtt</span>
+</pre></div>
+</td></tr></table></div>
+<p>To run the server:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">cd</span> <span class="nx">scripts</span><span class="o">/</span>
+<span class="nx">sudo</span> <span class="nx">node</span> <span class="nx">start_rovertelemetryui</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+</td></tr></table></div>
+<p>Finally, go to your web browser and find the page at <code class="docutils literal notranslate"><span class="pre">http://&lt;your</span> <span class="pre">host</span> <span class="pre">address&gt;:5055/rovertelemetryui.html</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="7. Installation Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roverweb.html" class="btn btn-neutral" title="5. Rover Web UI: roverweb" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Fachhochschule Dortmund - IDiAL.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'r0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
