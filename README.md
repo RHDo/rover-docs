@@ -1,7 +1,8 @@
 # rover-docs
 Documentation repository for APP4MC Rover project
 
+Contains not maintained Raspian image as well as tracing information that is deprecated, since APPSTACLE partners migrated to AGL completely.
 
-![Build Status](https://travis-ci.org/app4mc-rover/rover-docs.svg?branch=master)
+[![Documentation Status](https://readthedocs.org/projects/rover-docs/badge/?version=latest)](https://rover-docs.readthedocs.io/en/latest/?badge=latest)
 
-Comprehensive documentation link: https://app4mc-rover.github.io/rover-docs
+Documentation link: http://rover-docs.rtfd.io/
