@@ -15,7 +15,7 @@ Use `this link <https://app4mc-rover.github.io/rover-docs/content/aglimg.html>`_
 Raspbian Jessie Image
 ========================================
 
-Download `Raspbian Jessie Image <https://owncloud.idial.institute/s/uvcCBdCv9CrhZRk>`_.
+Download `Raspbian Jessie Image <https://owncloud.idial.institute/s/gLp5ZAd7SKz3bYM>`_.
 
 	* Includes dependencies and current rover-app, rover-telemetry-ui, and rover-web repositories
 	* Image Updated: 10.01.2017
