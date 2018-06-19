@@ -4,19 +4,19 @@
 Rover Software: roverapp
 #########################
 
-.. image:: ../roverstatic/images/roverapp_logo.png
+.. image:: roverapp_logo.png
    :width: 40%
    :align: center
-   :alt: ../roverstatic/images/roverapp_logo.png
-   
-   
+   :alt: roverapp_logo.png
+
+
 *************************************************
 What is roverapp?
 *************************************************
 
 **Roverapp** is an open-source C/C++ project for single board Linux computers (Raspberry Pi), especially designed for **rover**.
 It features multi-threaded schedulable and traceable software under GNU/Linux environment. For multi-threading, POSIX threads (Pthreads)
-and its synchronization implementations such as mutexes are widely used. 
+and its synchronization implementations such as mutexes are widely used.
 
 **Roverapp** complete feature list is given below:
 
@@ -53,7 +53,7 @@ Downloading roverapp
 .. note:: Rover-app source code is maintained under the following repository:
 
           `https://github.com/app4mc-rover/rover-app <https://github.com/app4mc-rover/rover-app>`_
-		  
+
 *************************************************
 Getting started with roverapp
 *************************************************
@@ -96,7 +96,7 @@ In order to register a device to the Eclipse Hono instance, ``registerDeviceToHo
 
 .. code-block:: c++
    :linenos:
-   
+
    int registerDeviceToHonoInstance (char * host_name, int port, char * tenant_name, char * device_id)
 
 The function takes the following arguments:
@@ -114,7 +114,7 @@ This function constructs a curl call on the system by constructing a string such
    :linenos:
 
    curl -X POST -i -H 'Content-Type: application/json' -d '{"device-id": "4711"}' http://idial.institute:28080/registration/DEFAULT_TENANT
-   
+
 Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.
 
 Sending Telemetry Data to Eclipse Hono Instance
@@ -125,7 +125,7 @@ In order to send telemetry data to the Eclipse Hono instance, ``sendTelemetryDat
 
 .. code-block:: c++
    :linenos:
-   
+
    int sendTelemetryDataToHonoInstance (char * host_name, int port, char * tenant_name, char * device_id, char * user, char * password, char * field, double value)
 
 The function takes the following arguments:
@@ -147,7 +147,7 @@ This function constructs a curl call on the system by constructing a string such
    :linenos:
 
    curl -X POST -i -u sensor1@DEFAULT_TENANT:hono-secret -H 'Content-Type: application/json' --data-binary '{"temp": 5}' http://idial.institute:8080/telemetry
-   
+
 Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.
 
 
@@ -159,7 +159,7 @@ In order to send event data to the Eclipse Hono instance, ``sendEventDataToHonoI
 
 .. code-block:: c++
    :linenos:
-   
+
    int sendEventDataToHonoInstance (char * host_name, int port, char * tenant_name, char * device_id, char * user, char * password, char * field, double value)
 
 The function takes the following arguments:
@@ -181,18 +181,18 @@ This function constructs a curl call on the system by constructing a string such
    :linenos:
 
    curl -X POST -i -u sensor1@DEFAULT_TENANT:hono-secret -H 'Content-Type: application/json' --data-binary '{"temp": 5}' http://idial.institute:8080/event
-   
+
 Afterwards, returning pipe content is read and parsed to decide whether the call is accepted or what kind of error has occurred.
- 
+
 Handling REST API /HTTP Responses and Status Codes
 --------------------------------------------------
 In order to handle the response codes of HTTP requests, ``handleCode`` function is developed:
 
 .. code-block:: c++
    :linenos:
-   
+
 	int handleCode(int code)
-	
+
 The commonly occuring HTTP responses are parsed and displayed in this library within ``handleCode`` function.
 
 ============== ====================== ======== =======================================================
@@ -201,11 +201,11 @@ Error Code     Meaning                Status   Explanation in Hono Terminology
 200	           OK                     1        Device registration is successful
 201	           Created                1        Device registration is successful
 202            Accepted               1        Telemetry data is accepted at Hono instance
-200..209                              1	        
-400	           Bad Request            0         
-403            Forbidden              0         
+200..209                              1
+400	           Bad Request            0
+403            Forbidden              0
 409            Conflict               0        Device is already registered
-400..409                              0         
+400..409                              0
 503            Service Unavailable    0        There is no consumer running. Please create a consumer
 ============== ====================== ======== =======================================================
 
@@ -225,10 +225,10 @@ The header file of the library contains two compiler directives for easy debuggi
 
 .. code-block:: c++
    :linenos:
-   
+
    #define DEBUG_HTTP_RESPONSE 1
    #define DEBUG_DEVICE_REGISTRATION 1
-   
+
 One can either define or comment/undefine these compiler directives.
 The first compiler directive is used for displaying the strings on console such as:
 
@@ -242,10 +242,10 @@ Due to the aforementioned reason, it is advised to keep this part as follows:
 
 .. code-block:: c++
    :linenos:
-   
+
    //#define DEBUG_HTTP_RESPONSE 1
    #define DEBUG_DEVICE_REGISTRATION 1
-   
+
 But uncomment the first line only when it is suspected that something regarding cloud connection is failing.
 
 When there is no internet connection with ``DEBUG_HTTP_RESPONSE`` defined, a message such as the following is displayed: ``Code: 0``.
@@ -254,7 +254,7 @@ Example Usage
 -------------------------------------------------
 
 .. code-block:: c++
-   
+
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include "hono_interaction.h"
@@ -276,7 +276,7 @@ Example Usage
 				{
 					  fprintf (stderr, "Data is not sent");
 				}
-		  }  
+		  }
 	}
 
 Resources
