@@ -17,7 +17,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-# import sys
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -31,6 +31,12 @@ import os
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.githubpages']
+
+# PYTHONPATH = docs/source
+DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(DOC_SOURCES_DIR))
+sys.path.insert(0, DOC_SOURCES_DIR)
+print('PROJECT_ROOT_DIR', PROJECT_ROOT_DIR)
 
 # If runs on ReadTheDocs environment
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
