@@ -32,6 +32,15 @@
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.githubpages']
 
+# If runs on ReadTheDocs environment
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+# Hack for lacking git-lfs support ReadTheDocs
+if on_rtd:
+    print('Fetching files with git_lfs')
+    from git_lfs import fetch
+    fetch(PROJECT_ROOT_DIR)
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['rovertemplates']
 
@@ -166,6 +175,3 @@ texinfo_documents = [
      author, 'Rover', 'Rover is a demonstrator that contains Cloud and Embedded Multi-core Computing technologies all at once.',
      'Miscellaneous'),
 ]
-
-
-
